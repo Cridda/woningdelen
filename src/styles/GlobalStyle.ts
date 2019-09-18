@@ -1,11 +1,8 @@
-import { dimensions, fonts, colors, breakpoints } from './variables';
+import { createGlobalStyle } from 'styled-components';
 import { getEmSize } from './mixins';
+import { breakpoints, colors, dimensions, fonts } from './variables';
 
-export default `
-  html {
-    box-sizing: border-box;
-  }
-
+export default createGlobalStyle`
   *,
   *::before,
   *::after {

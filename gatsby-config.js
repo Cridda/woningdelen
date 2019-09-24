@@ -2,10 +2,10 @@
 
 module.exports = {
     siteMetadata: {
-        title: 'cridda-gatsby-starter',
-        description: 'A starter kit for TypeScript-based Gatsby projects with sensible defaults.',
-        keywords: 'gatsbyjs, gatsby, javascript, sample, codegenerator',
-        siteUrl: 'https://cridda-gatsby-starter.netlify.com',
+        title: 'WONINGDELEN',
+        description: 'Een woning delen met anderen kan ook makkelijk zijn',
+        keywords: 'woning, delen, Amsterdam, goedkoop, samen, student, consumenten',
+        siteUrl: 'https://woningdelen.netlify.nl',
         author: {
             name: 'Chris Neven',
             url: 'https://twitter.com/chrisneven',
@@ -20,6 +20,13 @@ module.exports = {
                 path: `${__dirname}/src/content`,
             },
         },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+              name: `img`,
+              path: `${__dirname}/src/img/`
+            }
+          },
         {
             resolve: 'gatsby-transformer-remark',
             options: {

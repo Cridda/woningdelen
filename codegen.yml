@@ -6,10 +6,13 @@ documents:
 generates:
     src/generated/graphql.ts:
         config:
+            noNamespaces: true
             enumsAsTypes: true
         plugins:
             - "typescript"
             - "typescript-operations"
+            - add: "/* eslint-disable */"
+            - add: "/* tslint:disable */"
     schema.graphql:
         plugins:
             - schema-ast

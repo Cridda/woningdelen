@@ -1,22 +1,22 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
-
-import { widths } from '../styles/variables';
 import { getEmSize } from '../styles/mixins';
+import { widths } from '../styles/variables';
 
 const StyledContainer = styled.div`
     position: relative;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     width: auto;
     max-width: ${getEmSize(widths.lg)}em;
+    color: white;
+    text-align: center;
 `;
 
 interface ContainerProps {
     className?: string;
 }
 
-const Container: React.FC<ContainerProps> = ({ children, className }) => (
+const Container: FC<ContainerProps> = ({ children, className }) => (
     <StyledContainer className={className}>{children}</StyledContainer>
 );
 

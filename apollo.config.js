@@ -5,7 +5,7 @@ module.exports = {
             name: 'gatsby-starter',
             localSchemaFile: 'schema.graphql',
         },
-        includes: ['src/**/*.tsx'],
+        includes: ['src/**/*.{ts,tsx}' ],
         excludes: ['src/generated/graphql.tsx'],
     },
 };

@@ -1,48 +1,47 @@
-import { graphql, StaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import 'modern-normalize';
 import * as React from 'react';
 import Helmet from 'react-helmet';
 import Header from '../components/Header';
 import LayoutMain from '../components/LayoutMain';
 import LayoutRoot from '../components/LayoutRoot';
+import Footer from '../components/molecules/Footer';
+import { IndexLayoutQuery } from '../generated/graphql';
 import '../styles/GlobalStyle';
 
-interface StaticQueryProps {
-    site: {
-        siteMetadata: {
-            title: string;
-            description: string;
-            keywords: string;
-        };
-    };
-}
-
-const IndexLayout: React.FC = ({ children }) => (
-    <StaticQuery
-        query={graphql`
-            query IndexLayoutQuery {
-                site {
-                    siteMetadata {
-                        title
-                        description
-                    }
-                }
+export const indexLayoutQuery = graphql`
+    query IndexLayout {
+        site {
+            siteMetadata {
+                title
+                description
             }
-        `}
-        render={(data: StaticQueryProps) => (
-            <LayoutRoot>
-                <Helmet
-                    title={data.site.siteMetadata.title}
-                    meta={[
-                        { name: 'description', content: data.site.siteMetadata.description },
-                        { name: 'keywords', content: data.site.siteMetadata.keywords },
-                    ]}
-                />
-                <Header title={data.site.siteMetadata.title} />
-                <LayoutMain>{children}</LayoutMain>
-            </LayoutRoot>
-        )}
-    />
-);
+        }
+    }
+`;
+
+const IndexLayout: React.FC = ({ children }) => {
+    const { site } = useStaticQuery<IndexLayoutQuery>(indexLayoutQuery);
+    const siteMetadata = site && site.siteMetadata;
+
+    return (
+        <LayoutRoot>
+            {siteMetadata && (
+                <>
+                    <Helmet
+                        title={siteMetadata.title || undefined}
+                        meta={[
+                            { name: 'description', content: siteMetadata.description || undefined },
+                            { name: 'keywords', content: siteMetadata.description || undefined },
+                        ]}
+                    />
+                    {siteMetadata.title && <Header title={siteMetadata.title} />}
+                </>
+            )}
+            <LayoutMain>{children}</LayoutMain>
+            <Footer />
+        </LayoutRoot>
+    );
+};
 
 export default IndexLayout;

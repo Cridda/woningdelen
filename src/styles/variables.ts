@@ -3,8 +3,8 @@
 export const colors = {
     brand: '#663399',
     lilac: '#9d7cbf',
-    accent: '#ffb238',
-    accent1: '#ffa000',
+    accent: '#c8543c',
+    accent1: '#c8543c',
     success: '#37b635',
     warning: '#ec1818',
     ui: {

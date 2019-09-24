@@ -6,7 +6,6 @@ import useMenuState from '../hooks/useMenuState';
 import { breakpoints, colors, dimensions } from '../styles/variables';
 import logo from './../img/logo.png';
 import Burger from './atoms/Burger';
-import Container from './Container';
 import SideMenu from './molecules/SideMenu';
 
 interface HeaderProps {
@@ -113,12 +112,14 @@ const StyledLink = styled(Link)`
     }
 `;
 
-const HeaderInner = styled(Container)`
+const HeaderInner = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 100%;
     max-width: 100rem;
+    margin: auto;
+    position: relative;
 
     > ${StyledLink} + ${StyledLink} {
         margin-left: 3rem;

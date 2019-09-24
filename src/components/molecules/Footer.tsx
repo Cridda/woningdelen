@@ -16,12 +16,24 @@ const Footer: FC = () => {
                     <Insta />
                     <Fb />
                 </Social>
+                <Rights>
+                    <h2>woningdelen.nl</h2>
+                </Rights>
             </Inner>
         </Container>
     );
 };
 
 export default Footer;
+
+const Rights = styled.div`
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    > h2 {
+        margin: 0;
+    }
+`;
 
 const Social = styled.div`
     width: 50%;
@@ -51,7 +63,7 @@ const Container = styled.footer`
 const Inner = styled.div`
     width: ${widths.lg}px;
     margin: 0 auto;
-    padding: 2rem 0;
+    padding: 2rem;
     display: flex;
     flex-wrap: nowrap;
 `;

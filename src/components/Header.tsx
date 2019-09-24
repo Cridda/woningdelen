@@ -14,7 +14,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = () => {
     const { menuProps, setOpen, open } = useMenuState();
-
+    const ref = React.useRef(true);
     return (
         <StyledHeader>
             <HamburgerMenu ref={menuProps.menuRef}>
@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = () => {
                 <SideMenu {...menuProps} />
             </HamburgerMenu>
             <HeaderInner>
-                <Logo />
+                <Logo animate={ref.current} />
 
                 {routes.map(({ path, name }) => (
                     <StyledLink key={path} to={path}>
@@ -36,19 +36,32 @@ const Header: React.FC<HeaderProps> = () => {
 
 export default Header;
 
-const Logo = styled.div`
+const Logo = styled.div<{ animate: boolean }>`
     background: url(${logo}) no-repeat;
-    background-size: cover;
-    height: 8rem;
-    width: 14rem;
-    top: 0;
+    height: 10rem;
+    width: 6rem;
+    z-index: 1;
     position: absolute;
+    background-size: contain;
+    left: 4rem;
+    top: 0.5rem;
+
+    @media (min-width: ${breakpoints.sm}px) {
+        left: 4rem;
+        height: 10rem;
+        width: 8rem;
+    }
+
     @media (min-width: ${breakpoints.md}px) {
         left: -10rem;
+        height: 8rem;
+        width: 14rem;
+        background-size: cover;
+        top: 0;
     }
 
     @media (min-width: ${breakpoints.lg}px) {
-        animation: flyin 1s forwards 1s;
+        ${({ animate }) => animate && 'animation: flyin 1s forwards 1s;'}
         margin-left: 0;
         left: -15rem;
     }
@@ -77,6 +90,10 @@ const StyledHeader = styled.header`
     background-color: ${colors.white};
     color: ${colors.black};
     display: flex;
+
+    @media (max-width: ${breakpoints.sm}px) {
+        height: 7rem;
+    }
 `;
 
 const StyledLink = styled(Link)`
@@ -120,7 +137,6 @@ const HeaderInner = styled.div`
     max-width: 100rem;
     margin: auto;
     position: relative;
-
     > ${StyledLink} + ${StyledLink} {
         margin-left: 3rem;
 

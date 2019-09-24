@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { widths } from '../../styles/variables';
+import { breakpoints, widths } from '../../styles/variables';
 import Amsterdam from '../atoms/Amsterdam';
 import Fb from '../atoms/Fb';
 import Insta from '../atoms/Insta';
@@ -33,6 +33,10 @@ const Rights = styled.div`
     > h2 {
         margin: 0;
     }
+
+    @media (max-width: ${breakpoints.sm}px) {
+        justify-content: flex-start;
+    }
 `;
 
 const Social = styled.div`
@@ -45,7 +49,7 @@ const Social = styled.div`
 const AmsterdamWrapper = styled.div`
     background: white;
     position: absolute;
-    left: calc(50% - 25px);
+    left: calc(50% - 10px);
     top: -5rem;
     width: 2.5rem;
     display: flex;
@@ -66,4 +70,14 @@ const Inner = styled.div`
     padding: 2rem;
     display: flex;
     flex-wrap: nowrap;
+
+    @media (max-width: ${breakpoints.sm}px) {
+        flex-direction: column;
+    }
+
+    > * {
+        @media (max-width: ${breakpoints.sm}px) {
+            width: 100%;
+        }
+    }
 `;

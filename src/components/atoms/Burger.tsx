@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes, FC } from 'react';
 import styled from 'styled-components';
-import { colors } from '../../styles/variables';
+import { breakpoints, colors } from '../../styles/variables';
 
 const Burger: FC<ButtonHTMLAttributes<HTMLButtonElement> & { open: boolean }> = props => {
     return (
@@ -17,6 +17,9 @@ export default Burger;
 const StyledButton = styled.button<{ open: boolean }>`
     position: absolute;
     top: 3rem;
+    @media (max-width: ${breakpoints.sm}px) {
+        top: 2.5rem;
+    }
     left: 2rem;
     display: flex;
     flex-direction: column;

@@ -16,6 +16,7 @@ const StyledButton = styled.button<{ variant: Variant }>`
     margin: 0;
     padding: 1.5rem;
     border: none;
+    min-width: 10rem;
     background: ${({ variant }) => (variant === 'accent' ? colors.accent : '#222222')};
     color: ${({ variant }) => (variant === 'accent' ? 'white' : '#bcbec0')};
     text-transform: uppercase;

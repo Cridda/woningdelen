@@ -1,12 +1,13 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import * as React from 'react';
+import { Box, Flex } from 'reflexbox';
 import styled from 'styled-components';
 import Button from '../components/atoms/Button';
 import Page from '../components/Page';
 import { IndexImageQuery } from '../generated/graphql';
 import IndexLayout from '../layouts';
-import { colors } from '../styles/variables';
+import { breakpoints, colors } from '../styles/variables';
 
 export const indexImageQuery = graphql`
     query IndexImage {
@@ -43,12 +44,18 @@ const IndexPage = () => {
         <IndexLayout>
             <Page>
                 <Container>
-                    <h1 style={{ fontSize: '8vmin' }}>
+                    <h1 style={{ fontSize: '9vmin' }}>
                         Gewoon. <br />
                         Zorgeloos verhuren.
                     </h1>
-                    <Button variant={'accent'}>Omzettingsvergunning</Button>
-                    <Button variant={'accent'}>Advies</Button>
+                    <Actions flexDirection={['column', 'row']}>
+                        <Box mb={[3, 0, null]} mr={[null, 3]}>
+                            <Button variant={'accent'}>Omzettingsvergunning</Button>
+                        </Box>
+                        <Box>
+                            <Button variant={'accent'}>Advies</Button>
+                        </Box>
+                    </Actions>
                 </Container>
             </Page>
             {indexImage2 && indexImage2.childImageSharp && (
@@ -60,13 +67,19 @@ const IndexPage = () => {
 
 export default IndexPage;
 
+const Actions = styled(Flex)``;
+
 const Container = styled.div`
     color: white;
     background: ${colors.gray.calm};
     margin: auto 0 auto auto;
-    padding: 2rem 28vw 2rem 2rem;
-    > button + button {
-        margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 2rem 2rem 2rem;
+
+    @media (min-width: ${breakpoints.md}px) {
+        max-width: 65vw;
     }
 `;
 

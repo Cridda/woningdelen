@@ -17,7 +17,7 @@ const Footer: FC = () => {
                     <Fb />
                 </Social>
                 <Rights>
-                    <h2>woningdelen.nl</h2>
+                    <h3>woningdelen.nl</h3>
                 </Rights>
             </Inner>
         </Container>
@@ -30,7 +30,7 @@ const Rights = styled.div`
     width: 50%;
     display: flex;
     justify-content: center;
-    > h2 {
+    > h3 {
         margin: 0;
     }
 

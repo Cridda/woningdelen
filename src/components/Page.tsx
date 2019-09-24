@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { dimensions } from '../styles/variables';
 
@@ -14,8 +15,6 @@ interface PageProps {
     className?: string;
 }
 
-const Page: React.FC<PageProps> = ({ children, className }) => (
-    <StyledPage className={className}>{children}</StyledPage>
-);
+const Page: React.FC<PageProps & HTMLAttributes<HTMLDivElement>> = props => <StyledPage {...props} />;
 
 export default Page;

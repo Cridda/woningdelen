@@ -1,5 +1,6 @@
 import { Link } from 'gatsby';
 import * as React from 'react';
+import Headroom from 'react-headroom';
 import styled from 'styled-components';
 import routes from '../constants/routes';
 import useMenuState from '../hooks/useMenuState';
@@ -14,29 +15,33 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = () => {
     const { menuProps, setOpen, open } = useMenuState();
-    const ref = React.useRef(true);
+    const [pinned, setPinned] = React.useState(false);
     return (
-        <StyledHeader>
-            <HamburgerMenu ref={menuProps.menuRef}>
-                <Burger onClick={() => setOpen(!open)} open={open} />
-                <SideMenu {...menuProps} />
-            </HamburgerMenu>
-            <HeaderInner>
-                <Logo animate={ref.current} />
+        <Headroom onUnpin={() => setPinned(true)} onPin={() => setPinned(false)}>
+            <StyledHeader>
+                <HamburgerMenu ref={menuProps.menuRef}>
+                    <Burger onClick={() => setOpen(!open)} open={open} />
+                    <SideMenu {...menuProps} />
+                </HamburgerMenu>
+                <HeaderInner>
+                    <Link to={'/'}>
+                        <Logo pinned={pinned} animate />
+                    </Link>
 
-                {routes.map(({ path, name }) => (
-                    <StyledLink key={path} to={path}>
-                        {name}
-                    </StyledLink>
-                ))}
-            </HeaderInner>
-        </StyledHeader>
+                    {routes.map(({ path, name }) => (
+                        <StyledLink key={path} to={path}>
+                            {name}
+                        </StyledLink>
+                    ))}
+                </HeaderInner>
+            </StyledHeader>
+        </Headroom>
     );
 };
 
 export default Header;
 
-const Logo = styled.div<{ animate: boolean }>`
+const Logo = styled.div<{ animate?: boolean; pinned: boolean }>`
     background: url(${logo}) no-repeat;
     height: 10rem;
     width: 6rem;
@@ -45,7 +50,8 @@ const Logo = styled.div<{ animate: boolean }>`
     background-size: contain;
     left: 4rem;
     top: 0.5rem;
-
+    transition: all 200ms;
+    box-shadow: ${({ pinned }) => (pinned ? '0 20px 40px 0 rgba(16, 36, 48, 0.06)' : 'none')};
     @media (min-width: ${breakpoints.sm}px) {
         left: 4rem;
         height: 10rem;
@@ -57,7 +63,8 @@ const Logo = styled.div<{ animate: boolean }>`
         height: 8rem;
         width: 14rem;
         background-size: cover;
-        top: 0;
+        top: ${({ pinned }) => (pinned ? '1.5rem' : 0)};
+        left: 0;
     }
 
     @media (min-width: ${breakpoints.lg}px) {

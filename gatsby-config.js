@@ -2,8 +2,8 @@
 
 module.exports = {
     siteMetadata: {
-        title: 'WONINGDELEN',
-        description: 'Een woning delen met anderen kan ook makkelijk zijn',
+        title: 'Woningendelen | Een woning delen met anderen kan ook makkelijk zijn',
+        description: 'Woningendelen is een bedrijf dat zich in Amsterdam heeft gevistgd om de huiszoekende mensen te helpen',
         keywords: 'woning, delen, Amsterdam, goedkoop, samen, student, consumenten',
         siteUrl: 'https://woningdelen.netlify.nl',
         author: {

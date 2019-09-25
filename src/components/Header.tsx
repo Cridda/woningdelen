@@ -45,7 +45,7 @@ const Logo = styled.div<{ animate?: boolean; pinned: boolean }>`
     background: url(${logo}) no-repeat;
     height: 10rem;
     width: 6rem;
-    z-index: 1;
+    z-index: 3;
     position: absolute;
     background-size: contain;
     left: 4rem;

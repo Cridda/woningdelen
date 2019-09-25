@@ -77,9 +77,19 @@ const Container = styled.div`
     flex-direction: column;
     width: 100%;
     padding: 1rem 2rem 2rem 2rem;
+    animation: comein 700ms 500ms forwards;
+    transform: translateX(100%);
 
     @media (min-width: ${breakpoints.md}px) {
         max-width: 65vw;
+    }
+    @keyframes comein {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(0%);
+        }
     }
 `;
 

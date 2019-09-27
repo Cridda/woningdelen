@@ -30,7 +30,7 @@ const StyledButton = styled.button<{ open: boolean }>`
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 10;
+    z-index: 11;
 
     &:focus {
         outline: none;

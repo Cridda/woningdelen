@@ -7,6 +7,7 @@ export const colors = {
     accent1: '#c8543c',
     success: '#37b635',
     warning: '#ec1818',
+    cta: '#f9ea1d',
     ui: {
         bright: '#e0d6eb',
         light: '#f5f3f7',

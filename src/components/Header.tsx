@@ -43,16 +43,18 @@ export default Header;
 
 const Logo = styled.div<{ animate?: boolean; pinned: boolean }>`
     background: url(${logo}) no-repeat;
-    height: 10rem;
+    height: 6rem;
     width: 6rem;
     z-index: 3;
     position: absolute;
-    background-size: contain;
-    left: 4rem;
+    left: 5rem;
     top: 0.5rem;
+    background-size: cover;
+
     transition: all 200ms;
     box-shadow: ${({ pinned }) => (pinned ? '0 20px 40px 0 rgba(16, 36, 48, 0.06)' : 'none')};
     @media (min-width: ${breakpoints.sm}px) {
+        background-size: contain;
         left: 4rem;
         height: 10rem;
         width: 8rem;
@@ -61,16 +63,15 @@ const Logo = styled.div<{ animate?: boolean; pinned: boolean }>`
     @media (min-width: ${breakpoints.md}px) {
         left: -10rem;
         height: 8rem;
-        width: 14rem;
         background-size: cover;
-        top: ${({ pinned }) => (pinned ? '1.5rem' : 0)};
-        left: 0;
     }
 
     @media (min-width: ${breakpoints.lg}px) {
+        top: ${({ pinned }) => (pinned ? '1.5rem' : 0)};
         ${({ animate }) => animate && 'animation: flyin 1s forwards 1s;'}
         margin-left: 0;
         left: -15rem;
+        width: 14rem;
     }
 
     @keyframes flyin {

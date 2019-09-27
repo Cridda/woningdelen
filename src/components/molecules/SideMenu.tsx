@@ -33,7 +33,7 @@ const StyledMenu = styled.nav<Partial<MenuStateProps>>`
     top: 0;
     left: 0;
     transition: transform 0.3s ease-in-out;
-    z-index: 2;
+    z-index: 10;
     transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
     @media (max-width: ${breakpoints.sm}px) {
         width: 100%;

@@ -1,3 +1,4 @@
+import { RouteComponentProps } from '@reach/router';
 import { Link } from 'gatsby';
 import * as React from 'react';
 import Headroom from 'react-headroom';
@@ -9,11 +10,11 @@ import logo from './../img/logo.png';
 import Burger from './atoms/Burger';
 import SideMenu from './molecules/SideMenu';
 
-interface HeaderProps {
+interface HeaderProps extends RouteComponentProps {
     title: string;
 }
 
-const Header: React.FC<HeaderProps> = () => {
+const Header: React.FC<HeaderProps> = ({ location }) => {
     const { menuProps, setOpen, open } = useMenuState();
     const [pinned, setPinned] = React.useState(false);
     return (

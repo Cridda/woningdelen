@@ -29,8 +29,9 @@ const ContactForm: FC<Props> = ({ setOpen, onCloseHandler, variant = 'yellow', .
                     }),
                 })
                     .then(() => {
-                        alert('Success!');
+                        alert('Verstuurd!');
                         setSubmitting(false);
+                        setOpen(false);
                     })
                     .catch(() => {
                         alert('Error: Please Try Again!');
@@ -58,7 +59,7 @@ const ContactForm: FC<Props> = ({ setOpen, onCloseHandler, variant = 'yellow', .
                         </FormGroup>
 
                         <FormGroup flexDirection={'column'}>
-                            <Label htmlFor={'name'}>email</Label>
+                            <Label htmlFor={'name'}>Opmerkingen</Label>
                             <Input name={'comment'} as={'textarea'} id={'comment'} placeholder={'Opmerkingen'} />
                         </FormGroup>
 

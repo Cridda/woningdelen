@@ -1,20 +1,21 @@
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import * as React from 'react';
-import { Box, Flex } from 'reflexbox';
+import { Flex } from 'reflexbox';
 import styled from 'styled-components';
-import Appear from '../components/atoms/Appear';
 import Arrow from '../components/atoms/Arrow';
+import Block from '../components/molecules/Block';
+import { Cta } from '../components/molecules/Cta';
 import ContactForm from '../components/organisms/ContactForm';
 import Page from '../components/Page';
 import { DienstenImageQuery } from '../generated/graphql';
 import useMenuState from '../hooks/useMenuState';
 import IndexLayout from '../layouts';
-import { breakpoints, colors, widths } from '../styles/variables';
+import { widths } from '../styles/variables';
 
 export const dienstenImageQuery = graphql`
     query DienstenImage {
-        dienstenImage: file(relativePath: { eq: "index3.jpg" }) {
+        dienstenImage: file(relativePath: { eq: "diensten.jpg" }) {
             childImageSharp {
                 fluid(maxWidth: 1000) {
                     ...GatsbyImageSharpFluid
@@ -65,7 +66,7 @@ const Diensten = () => {
                         </ul>
                         <Cta onClick={() => cta.setOpen(true)}>
                             <Header>Woning delen?</Header>
-                            Neem nu contact op!
+                            Neem nu snel contact op!
                             <Arrow />
                         </Cta>
                     </Block>
@@ -136,54 +137,8 @@ const Diensten = () => {
 
 export default Diensten;
 
-const Cta = styled(Box)`
-    @media (min-width: ${breakpoints.lg}px) {
-        position: absolute;
-        bottom: -40%;
-        width: 25rem;
-        right: -1rem;
-    }
-    background: ${colors.cta};
-    min-height: 10rem;
-    padding: 1rem 2rem;
-    width: 100%;
-
-    ::after {
-        opacity: 1;
-        content: '';
-        height: 100%;
-        width: 100%;
-        background: #333333;
-        position: absolute;
-        left: -1rem;
-        bottom: -1rem;
-        z-index: -1;
-        user-select: none;
-    }
-    @media (max-width: ${breakpoints.lg}px) {
-        margin-bottom: -5rem !important;
-        ::after {
-            opacity: 0;
-        }
-    }
-`;
-
-const Block = styled(Appear)<{ right?: boolean }>`
-    max-width: ${widths.md}px;
-    background: white;
-    position: relative;
-    padding: 1rem 2rem;
-    align-self: ${({ right = false }) => (right ? 'flex-end' : 'flex-start')};
-    :last-of-type {
-        margin-bottom: 3rem;
-    }
-`;
 const Container = styled(Flex)`
     background: #333333;
-
-    > ${Block} + ${Block} {
-        margin-top: 3rem;
-    }
 `;
 
 const Header = styled.h2`

@@ -122,6 +122,10 @@ export default createGlobalStyle`
     margin-bottom: 1rem;
   }
 
+  button{
+      cursor: pointer;
+  }
+
   dt {
     font-weight: bold;
   }

@@ -9,7 +9,7 @@ const SideMenu: FC<MenuStateProps> = ({ ...props }) => {
     return (
         <StyledMenu {...props}>
             {routes.map(({ path, name }) => (
-                <Link key={path} to={path}>
+                <Link activeClassName={'active'} key={path} to={path}>
                     {name}
                 </Link>
             ))}

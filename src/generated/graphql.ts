@@ -2768,6 +2768,11 @@ export type IndexImageQueryVariables = {};
 
 export type IndexImageQuery = ({ __typename?: 'Query' } & { indexImage: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })>, indexImage2: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })>, indexImage3: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })> });
 
+export type WoningdelenImageQueryVariables = {};
+
+
+export type WoningdelenImageQuery = ({ __typename?: 'Query' } & { woningdelenImage: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })> });
+
 export type PageTemplateQueryQueryVariables = {
   slug: Scalars['String']
 };

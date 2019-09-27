@@ -29,7 +29,13 @@ const Header: React.FC<HeaderProps> = () => {
                     </Link>
 
                     {routes.map(({ path, name }) => (
-                        <StyledLink key={path} to={path}>
+                        <StyledLink
+                            activeClassName={'active'}
+                            activeStyle={{ fontWeight: 700 }}
+                            key={path}
+                            to={path}
+                            state={name === 'Contact' ? { prevPath: location.pathname } : undefined}
+                        >
                             {name}
                         </StyledLink>
                     ))}
@@ -110,6 +116,13 @@ const StyledLink = styled(Link)`
     font-weight: 600;
     position: relative;
     padding: 2rem 0;
+
+    .active {
+        ::after {
+            opacity: 1 !important;
+        }
+    }
+
     &:hover,
     &:focus {
         text-decoration: none;

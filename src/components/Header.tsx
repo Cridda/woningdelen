@@ -34,7 +34,11 @@ const Header: React.FC<HeaderProps> = () => {
                             activeStyle={{ fontWeight: 700 }}
                             key={path}
                             to={path}
-                            state={name === 'Contact' ? { prevPath: location.pathname } : undefined}
+                            state={
+                                name === 'Contact' && location && location.pathname
+                                    ? { prevPath: location.pathname }
+                                    : undefined
+                            }
                         >
                             {name}
                         </StyledLink>

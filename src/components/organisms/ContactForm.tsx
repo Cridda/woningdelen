@@ -1,6 +1,7 @@
 import { Field, FieldProps, Formik } from 'formik';
 import { encode } from 'querystring';
 import React, { FC, InputHTMLAttributes } from 'react';
+import { animated, config, useSpring } from 'react-spring';
 import { Flex } from 'reflexbox';
 import styled from 'styled-components';
 import { MenuStateProps } from '../../hooks/useMenuState';
@@ -15,7 +16,15 @@ interface Props extends MenuStateProps {
     onCloseHandler?: () => void;
 }
 
-const ContactForm: FC<Props> = ({ setOpen, onCloseHandler, variant = 'yellow', ...props }) => {
+const ContactForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yellow', menuRef }) => {
+    const props = useSpring({
+        // opacity: open ? 1 : 0,
+        // visibility: open ? 'visible' : 'hidden',
+        transform: open ? 'scale(1) rotate(0deg)' : 'scale(0) rotate(45deg)',
+        config: config.gentle,
+    });
+    // console.log(props);
+
     return (
         <Formik
             initialValues={{ name: '', email: '', comment: '' }}
@@ -40,8 +49,9 @@ const ContactForm: FC<Props> = ({ setOpen, onCloseHandler, variant = 'yellow', .
             }}
         >
             {({ handleSubmit, handleReset }) => (
-                <Container variant={variant} {...props}>
+                <Container variant={variant} ref={menuRef} style={props}>
                     <form
+                        style={{ overflow: 'scroll' }}
                         name="contact"
                         onSubmit={handleSubmit}
                         onReset={handleReset}
@@ -67,10 +77,10 @@ const ContactForm: FC<Props> = ({ setOpen, onCloseHandler, variant = 'yellow', .
                     </form>
                     <CloseButton
                         onClick={() => {
-                            setOpen(false);
                             if (onCloseHandler) {
                                 onCloseHandler();
                             }
+                            setOpen(false);
                         }}
                     >
                         <Close />
@@ -124,15 +134,9 @@ const Input: FC<InputHTMLAttributes<HTMLInputElement> & { as?: keyof JSX.Intrins
         {({ field }: FieldProps & { as?: keyof JSX.IntrinsicElements }) => <StyledInput {...props} {...field} />}
     </Field>
 );
-const Container = styled.div<Partial<Props>>`
-    opacity: ${({ open }) => (open ? 1 : 0)};
-    visibility: ${({ open }) => (open ? 'visible' : 'hidden')};
-    transition: all 200ms;
+const Container = styled(animated.div)<Partial<Props>>`
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
     z-index: 100;
     color: ${({ variant }) => (variant === 'yellow' ? '#222222' : colors.white)};
     background: ${({ variant }) => (variant === 'yellow' ? colors.cta : colors.accent)};
@@ -140,10 +144,18 @@ const Container = styled.div<Partial<Props>>`
     flex-direction: column;
     justify-content: center;
     padding: 1rem 10rem;
-
-    @media (max-width: ${breakpoints.md}px) {
+    @media (max-width: ${breakpoints.lg}px) {
         padding: 1rem 2rem;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
     }
+
+    width: 80vw;
+    height: 80vh;
+    top: 10vh;
+    left: 10vw;
 
     ${FormGroup} + ${FormGroup} {
         margin-top: 3rem;

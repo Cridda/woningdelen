@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { widths } from '../../styles/variables';
+import { breakpoints, widths } from '../../styles/variables';
 import Appear from '../atoms/Appear';
 
 interface Props {
@@ -13,7 +13,11 @@ const Block: FC<Props> = props => {
 export default Block;
 
 const StyledBlock = styled(Appear)<Props>`
-    max-width: ${widths.md}px;
+    width: ${widths.md}px;
+
+    @media (max-width: ${breakpoints.md}px) {
+        width: 100%;
+    }
     background: white;
     position: relative;
     padding: 1rem 2rem;

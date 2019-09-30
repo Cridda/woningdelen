@@ -17,7 +17,7 @@ export const dienstenImageQuery = graphql`
     query DienstenImage {
         dienstenImage: file(relativePath: { eq: "diensten.jpg" }) {
             childImageSharp {
-                fluid(maxWidth: 1000) {
+                fluid(maxWidth: 2560) {
                     ...GatsbyImageSharpFluid
                 }
             }
@@ -48,14 +48,7 @@ const Diensten = () => {
                     )}
                     <Block right>
                         <Header>Diensten</Header>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, sed praesentium quo earum
-                            saepe nihil esse eum, ullam nobis, ab eos rerum laudantium aliquam consectetur id inventore
-                            mollitia omnis velit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit,
-                            dignissimos. Ea vel voluptatum soluta. Esse illum, amet illo eius, cupiditate exercitationem
-                            voluptate earum tationem voluptate earum voluptatem provident at quidem vitae aspernatur
-                            natus.
-                        </p>
+                        <p>Hieronder vindt u de diensten die wij aanbieden:</p>
                         <ul>
                             <li>
                                 <Link to="/a-markdown-page/">Show me some Markdown!</Link>
@@ -71,7 +64,7 @@ const Diensten = () => {
                         </Cta>
                     </Block>
                     <Block>
-                        <Header>Diensten</Header>
+                        <Header>Pakket 1A</Header>
                         <p>
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, sed praesentium quo earum
                             saepe nihil esse eum, ullam nobis, ab eos rerum laudantium aliquam consectetur id inventore

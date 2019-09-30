@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
-import * as React from 'react';
+import React from 'react';
+import { animated, config, useSpring } from 'react-spring';
 import { Box, Flex } from 'reflexbox';
 import styled from 'styled-components';
 import Button from '../components/atoms/Button';
@@ -20,7 +21,7 @@ export const indexImageQuery = graphql`
         }
         indexImage2: file(relativePath: { eq: "index2.jpg" }) {
             childImageSharp {
-                fluid(maxWidth: 1000) {
+                fluid(maxWidth: 2560) {
                     ...GatsbyImageSharpFluid
                 }
             }
@@ -39,11 +40,18 @@ const backgroundStyle = { position: 'absolute', zIndex: -1, left: 0, top: 0, wid
 
 const IndexPage = () => {
     const { indexImage2 } = useStaticQuery<IndexImageQuery>(indexImageQuery);
+    const props = useSpring({
+        from: { transform: 'translateX(100%)' },
+        to: { transform: 'translateX(0)' },
+        config: { ...config.default },
+    });
 
+    // Update spring with new props
+    // Stop animation
     return (
         <IndexLayout>
             <Page>
-                <Container>
+                <Container style={props}>
                     <h1 style={{ fontSize: '9vmin' }}>
                         Gewoon. <br />
                         Zorgeloos verhuren.
@@ -69,7 +77,7 @@ export default IndexPage;
 
 const Actions = styled(Flex)``;
 
-const Container = styled.div`
+const Container = styled(animated.div)`
     color: white;
     background: ${colors.gray.calm};
     margin: auto 0 auto auto;
@@ -77,8 +85,8 @@ const Container = styled.div`
     flex-direction: column;
     width: 100%;
     padding: 1rem 2rem 2rem 2rem;
-    animation: comein 700ms 500ms forwards;
-    transform: translateX(100%);
+    /* animation: comein 700ms 500ms forwards; */
+    /* transform: translateX(100%); */
 
     @media (min-width: ${breakpoints.md}px) {
         max-width: 65vw;

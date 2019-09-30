@@ -79,7 +79,7 @@ const Logo = styled.div<{ animate?: boolean; pinned: boolean }>`
 
     @media (min-width: ${breakpoints.lg}px) {
         top: ${({ pinned }) => (pinned ? '1.5rem' : 0)};
-        ${({ animate }) => animate && 'animation: flyin 1s forwards 1s;'}
+        ${({ animate }) => animate && 'animation: flyin 1s forwards 500ms;'}
         margin-left: 0;
         left: -15rem;
         width: 14rem;

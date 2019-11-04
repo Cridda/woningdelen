@@ -12,8 +12,16 @@ import logo from './../img/logo.png';
 
 export const indexLayoutQuery = graphql`
     query IndexLayout {
+        indexImage: file(relativePath: { eq: "logo.png" }) {
+            childImageSharp {
+                original {
+                    src
+                }
+            }
+        }
         site {
             siteMetadata {
+                siteUrl
                 title
                 description
                 author {
@@ -37,7 +45,7 @@ const IndexLayout: React.FC = ({ children }) => {
                     <Helmet
                         title={siteMetadata.title || undefined}
                         meta={[
-                            { name: 'og:title', content: siteMetadata.title || undefined },
+                            { property: 'og:title', content: siteMetadata.title || undefined },
                             {
                                 name: 'author',
                                 content: siteMetadata.author
@@ -45,8 +53,8 @@ const IndexLayout: React.FC = ({ children }) => {
                                     : undefined,
                             },
                             { name: 'description', content: siteMetadata.description || undefined },
-                            { name: 'og:description', content: siteMetadata.description || undefined },
-                            { name: 'og:image', content: logo || undefined },
+                            { property: 'og:description', content: siteMetadata.description || undefined },
+                            { property: 'og:image', content: `${siteMetadata.siteUrl}${logo}` || undefined },
                             { name: 'keywords', content: siteMetadata.description || undefined },
                         ]}
                     />

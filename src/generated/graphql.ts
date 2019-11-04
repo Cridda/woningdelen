@@ -2756,7 +2756,7 @@ export type GatsbyImageSharpSizes_WithWebp_NoBase64Fragment = ({ __typename?: 'I
 export type IndexLayoutQueryVariables = {};
 
 
-export type IndexLayoutQuery = ({ __typename?: 'Query' } & { site: Maybe<({ __typename?: 'Site' } & { siteMetadata: Maybe<({ __typename?: 'SiteSiteMetadata' } & Pick<SiteSiteMetadata, 'title' | 'description'>)> })> });
+export type IndexLayoutQuery = ({ __typename?: 'Query' } & { site: Maybe<({ __typename?: 'Site' } & { siteMetadata: Maybe<({ __typename?: 'SiteSiteMetadata' } & Pick<SiteSiteMetadata, 'title' | 'description'> & { author: Maybe<({ __typename?: 'SiteSiteMetadataAuthor' } & Pick<SiteSiteMetadataAuthor, 'email' | 'name' | 'url'>)> })> })> });
 
 export type DienstenImageQueryVariables = {};
 

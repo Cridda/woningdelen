@@ -3,9 +3,10 @@
 module.exports = {
     siteMetadata: {
         title: 'Woningendelen | Een woning delen met anderen kan ook makkelijk zijn',
-        description: 'Woningendelen is een bedrijf dat zich in Amsterdam heeft gevistgd om de huiszoekende mensen te helpen',
+        description:
+            'Woningendelen is een bedrijf dat zich in Amsterdam heeft gevistgd om de huiszoekende mensen te helpen',
         keywords: 'woning, delen, Amsterdam, goedkoop, samen, student, consumenten',
-        siteUrl: 'https://woningdelen.netlify.nl',
+        siteUrl: 'https://www.woningendelen.nl',
         author: {
             name: 'Chris Neven',
             url: 'https://twitter.com/chrisneven',
@@ -23,10 +24,10 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-              name: `img`,
-              path: `${__dirname}/src/img/`
-            }
-          },
+                name: `img`,
+                path: `${__dirname}/src/img/`,
+            },
+        },
         {
             resolve: 'gatsby-transformer-remark',
             options: {
@@ -55,7 +56,7 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-canonical-urls',
             options: {
-                siteUrl: 'https://gatsby-starter-typescript-plus.netlify.com',
+                siteUrl: 'https://www.woningendelen.nl',
             },
         },
         'gatsby-plugin-styled-components',

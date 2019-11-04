@@ -8,6 +8,7 @@ import LayoutRoot from '../components/LayoutRoot';
 import Footer from '../components/molecules/Footer';
 import { IndexLayoutQuery } from '../generated/graphql';
 import '../styles/GlobalStyle';
+import logo from './../img/logo.png';
 
 export const indexLayoutQuery = graphql`
     query IndexLayout {
@@ -15,6 +16,11 @@ export const indexLayoutQuery = graphql`
             siteMetadata {
                 title
                 description
+                author {
+                    email
+                    name
+                    url
+                }
             }
         }
     }
@@ -31,7 +37,16 @@ const IndexLayout: React.FC = ({ children }) => {
                     <Helmet
                         title={siteMetadata.title || undefined}
                         meta={[
+                            { name: 'og:title', content: siteMetadata.title || undefined },
+                            {
+                                name: 'author',
+                                content: siteMetadata.author
+                                    ? `${siteMetadata.author.name}, ${siteMetadata.author.email}, ${siteMetadata.author.url}`
+                                    : undefined,
+                            },
                             { name: 'description', content: siteMetadata.description || undefined },
+                            { name: 'og:description', content: siteMetadata.description || undefined },
+                            { name: 'og:image', content: logo || undefined },
                             { name: 'keywords', content: siteMetadata.description || undefined },
                         ]}
                     />

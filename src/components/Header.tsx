@@ -54,45 +54,49 @@ export default Header;
 
 const Logo = styled.div<{ animate?: boolean; pinned: boolean }>`
     background: url(${logo}) no-repeat;
-    height: 6rem;
-    width: 6rem;
+    width: 10rem;
     z-index: 3;
     position: absolute;
-    left: 5rem;
+    left: 2rem;
     top: 0.5rem;
-    background-size: cover;
+    top: ${({ pinned }) => (pinned ? '2rem' : 0)};
 
+    height:10rem;
+    background-size: cover;
     transition: all 200ms;
     box-shadow: ${({ pinned }) => (pinned ? '0 20px 40px 0 rgba(16, 36, 48, 0.06)' : 'none')};
     @media (min-width: ${breakpoints.sm}px) {
+    top: ${({ pinned }) => (pinned ? '3.5rem' : 0)};
         background-size: contain;
         left: 4rem;
-        height: 10rem;
-        width: 8rem;
+        width: 10rem;
     }
 
     @media (min-width: ${breakpoints.md}px) {
+
         left: -10rem;
-        height: 8rem;
-        background-size: cover;
+        background-size: contain;
     }
 
     @media (min-width: ${breakpoints.lg}px) {
-        top: ${({ pinned }) => (pinned ? '1.5rem' : 0)};
-        ${({ animate }) => animate && 'animation: flyin 1s forwards 500ms;'}
+        top: ${({ pinned }) => (pinned ? '3.5rem' : 0)};
+        /* ${({ animate }) => animate && 'animation: flyin 1s forwards 500ms;'} */
         margin-left: 0;
-        left: -15rem;
-        width: 14rem;
+        left: -13rem;
+        width: 10rem;
+    }
+    @media (min-width: ${breakpoints.xl}px) {
+        left: -17rem;
     }
 
-    @keyframes flyin {
+    /* @keyframes flyin {
         from {
             height: 8rem;
         }
         to {
             height: 17rem;
         }
-    }
+    } */
 `;
 
 const HamburgerMenu = styled.div`
@@ -109,7 +113,6 @@ const StyledHeader = styled.header`
     background-color: ${colors.white};
     color: ${colors.black};
     display: flex;
-
     @media (max-width: ${breakpoints.sm}px) {
         height: 7rem;
     }
@@ -118,7 +121,7 @@ const StyledHeader = styled.header`
 const StyledLink = styled(Link)`
     color: darkslategray;
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 500;
     position: relative;
     padding: 2rem 0;
 

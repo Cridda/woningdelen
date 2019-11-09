@@ -15,12 +15,20 @@ export default Block;
 const StyledBlock = styled(Appear)<Props>`
     width: ${widths.md}px;
 
+    :first-of-type {
+        @media (min-width: ${breakpoints.lg}px) {
+            width: ${widths.xl}px;
+        }
+    }
+
     @media (max-width: ${breakpoints.md}px) {
         width: 100%;
     }
     background: white;
     position: relative;
-    padding: 1rem 2rem;
+    padding: 2rem 1.5rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
     align-self: ${({ right = false }) => (right ? 'flex-end' : 'flex-start')};
     :last-of-type {
         margin-bottom: 3rem;

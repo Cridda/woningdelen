@@ -662,7 +662,6 @@ export type FileFieldsEnum =
   'childMarkdownRemark___internal___mediaType' |
   'childMarkdownRemark___internal___owner' |
   'childMarkdownRemark___internal___type' |
-  'childImageSharp___id' |
   'childImageSharp___fixed___base64' |
   'childImageSharp___fixed___tracedSVG' |
   'childImageSharp___fixed___aspectRatio' |
@@ -716,6 +715,7 @@ export type FileFieldsEnum =
   'childImageSharp___resize___height' |
   'childImageSharp___resize___aspectRatio' |
   'childImageSharp___resize___originalName' |
+  'childImageSharp___id' |
   'childImageSharp___parent___id' |
   'childImageSharp___parent___parent___id' |
   'childImageSharp___parent___parent___children' |
@@ -847,13 +847,13 @@ export type ImageFormat =
   'WEBP';
 
 export type ImageSharp = Node & {
-  id: Scalars['ID'],
   fixed?: Maybe<ImageSharpFixed>,
   resolutions?: Maybe<ImageSharpResolutions>,
   fluid?: Maybe<ImageSharpFluid>,
   sizes?: Maybe<ImageSharpSizes>,
   original?: Maybe<ImageSharpOriginal>,
   resize?: Maybe<ImageSharpResize>,
+  id: Scalars['ID'],
   parent?: Maybe<Node>,
   children: Array<Node>,
   internal: Internal,
@@ -991,7 +991,6 @@ export type ImageSharpEdge = {
 };
 
 export type ImageSharpFieldsEnum = 
-  'id' |
   'fixed___base64' |
   'fixed___tracedSVG' |
   'fixed___aspectRatio' |
@@ -1045,6 +1044,7 @@ export type ImageSharpFieldsEnum =
   'resize___height' |
   'resize___aspectRatio' |
   'resize___originalName' |
+  'id' |
   'parent___id' |
   'parent___parent___id' |
   'parent___parent___parent___id' |
@@ -1132,13 +1132,13 @@ export type ImageSharpFieldsEnum =
   'internal___type';
 
 export type ImageSharpFilterInput = {
-  id?: Maybe<StringQueryOperatorInput>,
   fixed?: Maybe<ImageSharpFixedFilterInput>,
   resolutions?: Maybe<ImageSharpResolutionsFilterInput>,
   fluid?: Maybe<ImageSharpFluidFilterInput>,
   sizes?: Maybe<ImageSharpSizesFilterInput>,
   original?: Maybe<ImageSharpOriginalFilterInput>,
   resize?: Maybe<ImageSharpResizeFilterInput>,
+  id?: Maybe<StringQueryOperatorInput>,
   parent?: Maybe<NodeFilterInput>,
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
@@ -1663,10 +1663,10 @@ export type PotraceTurnPolicy =
 export type Query = {
   file?: Maybe<File>,
   allFile: FileConnection,
-  imageSharp?: Maybe<ImageSharp>,
-  allImageSharp: ImageSharpConnection,
   markdownRemark?: Maybe<MarkdownRemark>,
   allMarkdownRemark: MarkdownRemarkConnection,
+  imageSharp?: Maybe<ImageSharp>,
+  allImageSharp: ImageSharpConnection,
   sitePage?: Maybe<SitePage>,
   allSitePage: SitePageConnection,
   sitePlugin?: Maybe<SitePlugin>,
@@ -1730,28 +1730,6 @@ export type QueryAllFileArgs = {
 };
 
 
-export type QueryImageSharpArgs = {
-  id?: Maybe<StringQueryOperatorInput>,
-  fixed?: Maybe<ImageSharpFixedFilterInput>,
-  resolutions?: Maybe<ImageSharpResolutionsFilterInput>,
-  fluid?: Maybe<ImageSharpFluidFilterInput>,
-  sizes?: Maybe<ImageSharpSizesFilterInput>,
-  original?: Maybe<ImageSharpOriginalFilterInput>,
-  resize?: Maybe<ImageSharpResizeFilterInput>,
-  parent?: Maybe<NodeFilterInput>,
-  children?: Maybe<NodeFilterListInput>,
-  internal?: Maybe<InternalFilterInput>
-};
-
-
-export type QueryAllImageSharpArgs = {
-  filter?: Maybe<ImageSharpFilterInput>,
-  sort?: Maybe<ImageSharpSortInput>,
-  skip?: Maybe<Scalars['Int']>,
-  limit?: Maybe<Scalars['Int']>
-};
-
-
 export type QueryMarkdownRemarkArgs = {
   id?: Maybe<StringQueryOperatorInput>,
   frontmatter?: Maybe<MarkdownRemarkFrontmatterFilterInput>,
@@ -1775,6 +1753,28 @@ export type QueryMarkdownRemarkArgs = {
 export type QueryAllMarkdownRemarkArgs = {
   filter?: Maybe<MarkdownRemarkFilterInput>,
   sort?: Maybe<MarkdownRemarkSortInput>,
+  skip?: Maybe<Scalars['Int']>,
+  limit?: Maybe<Scalars['Int']>
+};
+
+
+export type QueryImageSharpArgs = {
+  fixed?: Maybe<ImageSharpFixedFilterInput>,
+  resolutions?: Maybe<ImageSharpResolutionsFilterInput>,
+  fluid?: Maybe<ImageSharpFluidFilterInput>,
+  sizes?: Maybe<ImageSharpSizesFilterInput>,
+  original?: Maybe<ImageSharpOriginalFilterInput>,
+  resize?: Maybe<ImageSharpResizeFilterInput>,
+  id?: Maybe<StringQueryOperatorInput>,
+  parent?: Maybe<NodeFilterInput>,
+  children?: Maybe<NodeFilterListInput>,
+  internal?: Maybe<InternalFilterInput>
+};
+
+
+export type QueryAllImageSharpArgs = {
+  filter?: Maybe<ImageSharpFilterInput>,
+  sort?: Maybe<ImageSharpSortInput>,
   skip?: Maybe<Scalars['Int']>,
   limit?: Maybe<Scalars['Int']>
 };
@@ -2266,10 +2266,24 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___name' |
   'pluginCreator___pluginOptions___path' |
   'pluginCreator___pluginOptions___wrapperStyle' |
+  'pluginCreator___pluginOptions___ignoreFileExtensions' |
   'pluginCreator___pluginOptions___maxWidth' |
   'pluginCreator___pluginOptions___quality' |
   'pluginCreator___pluginOptions___linkImagesToOriginal' |
+  'pluginCreator___pluginOptions___pathPrefix' |
+  'pluginCreator___pluginOptions___backgroundColor' |
+  'pluginCreator___pluginOptions___showCaptions' |
+  'pluginCreator___pluginOptions___markdownCaptions' |
+  'pluginCreator___pluginOptions___withWebp' |
+  'pluginCreator___pluginOptions___tracedSVG' |
+  'pluginCreator___pluginOptions___loading' |
   'pluginCreator___pluginOptions___siteUrl' |
+  'pluginCreator___pluginOptions___short_name' |
+  'pluginCreator___pluginOptions___start_url' |
+  'pluginCreator___pluginOptions___background_color' |
+  'pluginCreator___pluginOptions___theme_color' |
+  'pluginCreator___pluginOptions___display' |
+  'pluginCreator___pluginOptions___icon' |
   'pluginCreator___pluginOptions___pathCheck' |
   'pluginCreator___nodeAPIs' |
   'pluginCreator___browserAPIs' |
@@ -2463,19 +2477,41 @@ export type SitePluginFieldsEnum =
   'pluginOptions___plugins___name' |
   'pluginOptions___plugins___version' |
   'pluginOptions___plugins___pluginOptions___wrapperStyle' |
+  'pluginOptions___plugins___pluginOptions___ignoreFileExtensions' |
   'pluginOptions___plugins___pluginOptions___maxWidth' |
   'pluginOptions___plugins___pluginOptions___quality' |
   'pluginOptions___plugins___pluginOptions___linkImagesToOriginal' |
+  'pluginOptions___plugins___pluginOptions___pathPrefix' |
+  'pluginOptions___plugins___pluginOptions___backgroundColor' |
+  'pluginOptions___plugins___pluginOptions___showCaptions' |
+  'pluginOptions___plugins___pluginOptions___markdownCaptions' |
+  'pluginOptions___plugins___pluginOptions___withWebp' |
+  'pluginOptions___plugins___pluginOptions___tracedSVG' |
+  'pluginOptions___plugins___pluginOptions___loading' |
   'pluginOptions___plugins___browserAPIs' |
   'pluginOptions___plugins___ssrAPIs' |
   'pluginOptions___plugins___pluginFilepath' |
   'pluginOptions___name' |
   'pluginOptions___path' |
   'pluginOptions___wrapperStyle' |
+  'pluginOptions___ignoreFileExtensions' |
   'pluginOptions___maxWidth' |
   'pluginOptions___quality' |
   'pluginOptions___linkImagesToOriginal' |
+  'pluginOptions___pathPrefix' |
+  'pluginOptions___backgroundColor' |
+  'pluginOptions___showCaptions' |
+  'pluginOptions___markdownCaptions' |
+  'pluginOptions___withWebp' |
+  'pluginOptions___tracedSVG' |
+  'pluginOptions___loading' |
   'pluginOptions___siteUrl' |
+  'pluginOptions___short_name' |
+  'pluginOptions___start_url' |
+  'pluginOptions___background_color' |
+  'pluginOptions___theme_color' |
+  'pluginOptions___display' |
+  'pluginOptions___icon' |
   'pluginOptions___pathCheck' |
   'nodeAPIs' |
   'browserAPIs' |
@@ -2596,10 +2632,24 @@ export type SitePluginPluginOptions = {
   name?: Maybe<Scalars['String']>,
   path?: Maybe<Scalars['String']>,
   wrapperStyle?: Maybe<Scalars['String']>,
+  ignoreFileExtensions?: Maybe<Array<Maybe<Scalars['String']>>>,
   maxWidth?: Maybe<Scalars['Int']>,
   quality?: Maybe<Scalars['Int']>,
   linkImagesToOriginal?: Maybe<Scalars['Boolean']>,
+  pathPrefix?: Maybe<Scalars['String']>,
+  backgroundColor?: Maybe<Scalars['String']>,
+  showCaptions?: Maybe<Scalars['Boolean']>,
+  markdownCaptions?: Maybe<Scalars['Boolean']>,
+  withWebp?: Maybe<Scalars['Boolean']>,
+  tracedSVG?: Maybe<Scalars['Boolean']>,
+  loading?: Maybe<Scalars['String']>,
   siteUrl?: Maybe<Scalars['String']>,
+  short_name?: Maybe<Scalars['String']>,
+  start_url?: Maybe<Scalars['String']>,
+  background_color?: Maybe<Scalars['String']>,
+  theme_color?: Maybe<Scalars['String']>,
+  display?: Maybe<Scalars['String']>,
+  icon?: Maybe<Scalars['String']>,
   pathCheck?: Maybe<Scalars['Boolean']>,
 };
 
@@ -2608,10 +2658,24 @@ export type SitePluginPluginOptionsFilterInput = {
   name?: Maybe<StringQueryOperatorInput>,
   path?: Maybe<StringQueryOperatorInput>,
   wrapperStyle?: Maybe<StringQueryOperatorInput>,
+  ignoreFileExtensions?: Maybe<StringQueryOperatorInput>,
   maxWidth?: Maybe<IntQueryOperatorInput>,
   quality?: Maybe<IntQueryOperatorInput>,
   linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>,
+  pathPrefix?: Maybe<StringQueryOperatorInput>,
+  backgroundColor?: Maybe<StringQueryOperatorInput>,
+  showCaptions?: Maybe<BooleanQueryOperatorInput>,
+  markdownCaptions?: Maybe<BooleanQueryOperatorInput>,
+  withWebp?: Maybe<BooleanQueryOperatorInput>,
+  tracedSVG?: Maybe<BooleanQueryOperatorInput>,
+  loading?: Maybe<StringQueryOperatorInput>,
   siteUrl?: Maybe<StringQueryOperatorInput>,
+  short_name?: Maybe<StringQueryOperatorInput>,
+  start_url?: Maybe<StringQueryOperatorInput>,
+  background_color?: Maybe<StringQueryOperatorInput>,
+  theme_color?: Maybe<StringQueryOperatorInput>,
+  display?: Maybe<StringQueryOperatorInput>,
+  icon?: Maybe<StringQueryOperatorInput>,
   pathCheck?: Maybe<BooleanQueryOperatorInput>,
 };
 
@@ -2643,16 +2707,32 @@ export type SitePluginPluginOptionsPluginsFilterListInput = {
 
 export type SitePluginPluginOptionsPluginsPluginOptions = {
   wrapperStyle?: Maybe<Scalars['String']>,
+  ignoreFileExtensions?: Maybe<Array<Maybe<Scalars['String']>>>,
   maxWidth?: Maybe<Scalars['Int']>,
   quality?: Maybe<Scalars['Int']>,
   linkImagesToOriginal?: Maybe<Scalars['Boolean']>,
+  pathPrefix?: Maybe<Scalars['String']>,
+  backgroundColor?: Maybe<Scalars['String']>,
+  showCaptions?: Maybe<Scalars['Boolean']>,
+  markdownCaptions?: Maybe<Scalars['Boolean']>,
+  withWebp?: Maybe<Scalars['Boolean']>,
+  tracedSVG?: Maybe<Scalars['Boolean']>,
+  loading?: Maybe<Scalars['String']>,
 };
 
 export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
   wrapperStyle?: Maybe<StringQueryOperatorInput>,
+  ignoreFileExtensions?: Maybe<StringQueryOperatorInput>,
   maxWidth?: Maybe<IntQueryOperatorInput>,
   quality?: Maybe<IntQueryOperatorInput>,
   linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>,
+  pathPrefix?: Maybe<StringQueryOperatorInput>,
+  backgroundColor?: Maybe<StringQueryOperatorInput>,
+  showCaptions?: Maybe<BooleanQueryOperatorInput>,
+  markdownCaptions?: Maybe<BooleanQueryOperatorInput>,
+  withWebp?: Maybe<BooleanQueryOperatorInput>,
+  tracedSVG?: Maybe<BooleanQueryOperatorInput>,
+  loading?: Maybe<StringQueryOperatorInput>,
 };
 
 export type SitePluginSortInput = {
@@ -2761,7 +2841,7 @@ export type IndexLayoutQuery = ({ __typename?: 'Query' } & { indexImage: Maybe<(
 export type DienstenImageQueryVariables = {};
 
 
-export type DienstenImageQuery = ({ __typename?: 'Query' } & { dienstenImage: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })> });
+export type DienstenImageQuery = ({ __typename?: 'Query' } & { dienstenImage: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })>, together: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })> });
 
 export type IndexImageQueryVariables = {};
 

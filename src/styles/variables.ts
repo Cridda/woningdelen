@@ -8,6 +8,7 @@ export const colors = {
     success: '#37b635',
     warning: '#ec1818',
     cta: '#f9ea1d',
+    dark: '#3b465a',
     ui: {
         bright: '#e0d6eb',
         light: '#f5f3f7',
@@ -25,7 +26,7 @@ export const colors = {
 
 export const fonts = {
     sansSerif:
-        '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif',
+        '"Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif',
     serif: 'Georgia, "Times New Roman", Times, serif',
     monospace: 'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace, monospace',
 };

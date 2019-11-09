@@ -63,5 +63,17 @@ module.exports = {
         'gatsby-plugin-typescript',
         'gatsby-plugin-sharp',
         'gatsby-transformer-sharp',
+        {
+            resolve: `gatsby-plugin-manifest`,
+            options: {
+                name: `Woning & Delen`,
+                short_name: `Woningendelen`,
+                start_url: `/`,
+                background_color: `#3b465a`,
+                theme_color: `#f9ea1d`,
+                display: `standalone`,
+                icon: 'src/img/favicon.png',
+            },
+        },
     ],
 };

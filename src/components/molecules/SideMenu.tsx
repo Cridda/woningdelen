@@ -25,7 +25,7 @@ const StyledMenu = styled.nav<Partial<MenuStateProps>>`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: ${colors.accent};
+    background: ${colors.dark};
     height: 100vh;
     text-align: left;
     padding: 2rem;

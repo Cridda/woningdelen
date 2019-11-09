@@ -1,16 +1,12 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { breakpoints, widths } from '../../styles/variables';
-import Amsterdam from '../atoms/Amsterdam';
 import Fb from '../atoms/Fb';
 import Insta from '../atoms/Insta';
 
 const Footer: FC = () => {
     return (
         <Container>
-            <AmsterdamWrapper>
-                <Amsterdam />
-            </AmsterdamWrapper>
             <Inner>
                 <Social>
                     <Insta />
@@ -46,18 +42,6 @@ const Social = styled.div`
     }
 `;
 
-const AmsterdamWrapper = styled.div`
-    background: white;
-    position: absolute;
-    left: calc(50% - 10px);
-    top: -5rem;
-    width: 2.5rem;
-    display: flex;
-    justify-content: center;
-    height: 6rem;
-    align-items: center;
-    color: #c8543c;
-`;
 const Container = styled.footer`
     background: white;
     display: flex;

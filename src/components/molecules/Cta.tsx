@@ -7,7 +7,7 @@ export const Cta = styled(Box)`
     cursor: pointer;
     @media (min-width: ${breakpoints.lg}px) {
         position: absolute;
-        bottom: -40%;
+        bottom: -25%;
         width: 25rem;
         right: -1rem;
     }
@@ -26,7 +26,7 @@ export const Cta = styled(Box)`
         content: '';
         height: 100%;
         width: 100%;
-        background: #333333;
+        background: #3b465a;
         position: absolute;
         left: -1rem;
         bottom: -1rem;

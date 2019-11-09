@@ -1,4 +1,4 @@
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import React from 'react';
 import { animated, config, useSpring } from 'react-spring';
@@ -52,16 +52,20 @@ const IndexPage = () => {
         <IndexLayout>
             <Page>
                 <Container style={props}>
-                    <h1 style={{ fontSize: '9vmin' }}>
+                    <h1 style={{ fontSize: '8vmin' }}>
                         Gewoon. <br />
                         Zorgeloos verhuren.
                     </h1>
                     <Actions flexDirection={['column', 'row']}>
                         <Box mb={[3, 0, null]} mr={[null, 3]}>
-                            <Button variant={'accent'}>Omzettingsvergunning</Button>
+                            <Link to={'/diensten'}>
+                                <Button variant={'accent'}>Omzettingsvergunning</Button>
+                            </Link>
                         </Box>
                         <Box>
-                            <Button variant={'accent'}>Advies</Button>
+                            <Link to={'/woningendelen'}>
+                                <Button variant={'accent'}>Advies</Button>
+                            </Link>
                         </Box>
                     </Actions>
                 </Container>

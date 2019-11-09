@@ -3,6 +3,7 @@ import { getEmSize } from './mixins';
 import { breakpoints, colors, dimensions, fonts } from './variables';
 
 export default createGlobalStyle`
+
   *,
   *::before,
   *::after {
@@ -15,10 +16,11 @@ export default createGlobalStyle`
   }
 
   body {
+    @import url('https://fonts.googleapis.com/css?family=Raleway:400,500,700&display=swap');
     width: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
-    font-family: ${fonts.sansSerif};
+    font-family: ${fonts.sansSerif} !important;
     color: darkslategray;
     background-color: ${colors.white};
     -webkit-text-size-adjust: 100%;
@@ -84,7 +86,7 @@ export default createGlobalStyle`
     margin-top: 1.414rem;
     margin-bottom: .5rem;
     color: currentColor;
-    font-weight: 600;
+    font-weight: 500;
     line-height: ${dimensions.lineHeight.heading};
     text-rendering: optimizeLegibility;
   }
@@ -104,6 +106,8 @@ export default createGlobalStyle`
 
   h4, h5, h6 {
     font-size: ${dimensions.headingSizes.h4}rem;
+    font-weight: 500 !important;
+    margin-top: .5rem;
   }
 
   p {

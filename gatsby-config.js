@@ -62,6 +62,7 @@ module.exports = {
         'gatsby-plugin-styled-components',
         'gatsby-plugin-typescript',
         'gatsby-plugin-sharp',
+        'gatsby-plugin-react-helmet',
         'gatsby-transformer-sharp',
         {
             resolve: `gatsby-plugin-manifest`,

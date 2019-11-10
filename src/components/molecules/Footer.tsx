@@ -17,7 +17,7 @@ const Footer: FC = () => {
                     </a>
                 </Social>
                 <Rights>
-                    <h3>woningdelen.nl</h3>
+                    <h3>woningendelen.nl</h3>
                 </Rights>
             </Inner>
         </Container>

@@ -81,7 +81,7 @@ const Diensten = () => {
                             </Box>
                         </Flex>
                         <Cta onClick={() => cta.setOpen(true)}>
-                            <Header>Omzettingsvergunning?</Header>
+                            <Header>Vergunning nodig?</Header>
                             Neem nu snel contact op!
                             <Arrow />
                         </Cta>
@@ -126,7 +126,7 @@ const Diensten = () => {
                                     <Img fluid={architectureDraw.childImageSharp.fluid as FluidObject} />
                                 )}
                             </Box>
-                            <Box width={[1, 1 / 2]} pl={4} pb={[5, 0]}>
+                            <Box width={[1, 1 / 2]} pl={[0, 0, 4]} pb={[5, 0]}>
                                 <h1>Wat nog meer?</h1>
                                 <p>
                                     Tevens zijn wij gespecialiseerd in het geven van begeleiding in de bouw. Kijk hier

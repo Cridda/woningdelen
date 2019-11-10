@@ -55,8 +55,8 @@ const Woningdelen = () => {
                     )}
                     <Block width={'full'} right>
                         <Flex flexDirection={['column', 'row']}>
-                            <Box width={[1, 1 / 2]} pr={4} pb={[5, 0]}>
-                                <h1>Omzettingsvergunning</h1>
+                            <Box width={[1, 1 / 2]} pb={[5, 0]}>
+                                <h1 style={{ wordWrap: 'break-word' }}>Omzettingsvergunning</h1>
                                 <h3>
                                     De gemeente Amsterdam Heeft per 1 januari 2017 een nieuw beleid voor woningdelen
                                     opgesteld.

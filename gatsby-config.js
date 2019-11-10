@@ -3,8 +3,7 @@
 module.exports = {
     siteMetadata: {
         title: 'Woningendelen | Een woning delen met anderen kan ook makkelijk zijn',
-        description:
-            'Woningendelen is een bedrijf dat zich in Amsterdam heeft gevistgd om de huiszoekende mensen te helpen',
+        description: 'Op zoek naar een omzettingsvergunning of bouwadvies? Woningendelen biedt een helpende hand.',
         keywords: 'woning, delen, Amsterdam, goedkoop, samen, student, consumenten',
         siteUrl: 'https://www.woningendelen.nl',
         author: {

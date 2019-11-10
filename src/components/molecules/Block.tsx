@@ -17,7 +17,7 @@ export default Block;
 const StyledBlock = styled(Appear)<Props>`
     width: ${({ width = 'twoThird' }) => (width === 'twoThird' ? widths.md : widths.xl)}px;
 
-    @media (max-width: ${breakpoints.md}px) {
+    @media (max-width: ${breakpoints.xl}px) {
         width: 100%;
     }
 

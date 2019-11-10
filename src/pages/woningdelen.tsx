@@ -55,7 +55,7 @@ const Woningdelen = () => {
                     )}
                     <Block width={'full'} right>
                         <Flex flexDirection={['column', 'row']}>
-                            <Box width={[1, 1 / 2]} pb={[5, 0]}>
+                            <Box width={[1, 1 / 2]} pb={[5, 0]} pr={[0, 3]}>
                                 <h1 style={{ wordWrap: 'break-word' }}>Omzettingsvergunning</h1>
                                 <h3>
                                     De gemeente Amsterdam Heeft per 1 januari 2017 een nieuw beleid voor woningdelen
@@ -77,16 +77,18 @@ const Woningdelen = () => {
                                 )}
                             </Box>
                         </Flex>
+                        <Seperator />
                         <h3>Voorwaarden voor het omzetten van een woning naar 3 of 4 onzelfstandige woonruimte</h3>
                         <Features
                             features={[
                                 `De woning beschikt over een gemeenschappelijke verblijfsruimte van ten minste 11 m2 met een minimale breedte van 3 meter (art. 4.3 lid 4 Bouwbesluit).
 Er moet een gemeenschappelijke ruimte voor de bewoners zijn. Deze ruimte moet een ruimte zijn die bestemd is voor het ‘verblijven’ van personen. Het mag dus geen bad- of slaapkamer zijn; het moet een verblijfsruimte, zoals een woonkamer of een woonkeuken, zijn.
 `,
-                                `2.	Er wordt voldaan aan de eisen voor geluidsisolatie. Deze eisen zijn op de website van de gemeente Amsterdam te vinden.8 Oudere woningen met houten vloeren/plafonds voldoen in de regel niet aan deze eisen. Deze woningen vergen dus bouwkundige maatregelen om aan de eisen te voldoen.`,
+                                `Er wordt voldaan aan de eisen voor geluidsisolatie. Deze eisen zijn op de website van de gemeente Amsterdam te vinden.8 Oudere woningen met houten vloeren/plafonds voldoen in de regel niet aan deze eisen. Deze woningen vergen dus bouwkundige maatregelen om aan de eisen te voldoen.`,
                             ]}
                             icon={<FeatureIcon />}
                         />
+                        <Seperator />
                         <h3>Voorwaarden voor het omzetten van een woning naar 5 of meer onzelfstandige woonruimte</h3>
                         <Features
                             features={[

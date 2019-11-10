@@ -53,9 +53,15 @@ const IndexLayout: React.FC = ({ children }) => {
                                     : undefined,
                             },
                             { name: 'description', content: siteMetadata.description || undefined },
-                            { property: 'og:description', content: siteMetadata.description || undefined },
-                            { property: 'og:image', content: `${siteMetadata.siteUrl}${logo}` || undefined },
+                            { name: 'og:description', content: siteMetadata.description || undefined },
+                            { name: 'og:image', content: `${siteMetadata.siteUrl}${logo}` || undefined },
                             { name: 'keywords', content: siteMetadata.description || undefined },
+                        ]}
+                        link={[
+                            {
+                                href: 'https://fonts.googleapis.com/css?family=Raleway:400,500,700&display=swap',
+                                rel: 'stylesheet',
+                            },
                         ]}
                     />
                     {siteMetadata.title && <Header title={siteMetadata.title} />}

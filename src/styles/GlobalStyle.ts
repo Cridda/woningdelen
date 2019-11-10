@@ -16,7 +16,6 @@ export default createGlobalStyle`
   }
 
   body {
-    @import url('https://fonts.googleapis.com/css?family=Raleway:400,500,700&display=swap');
     width: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -28,7 +27,7 @@ export default createGlobalStyle`
   }
 
   a {
-    color: ${colors.brand};
+    color: ${colors.accent};
     text-decoration: none;
 
     &:hover,
@@ -116,7 +115,7 @@ export default createGlobalStyle`
   }
 
   strong {
-    color: ${colors.black};
+    color: ${colors.dark};
   }
 
   ul,

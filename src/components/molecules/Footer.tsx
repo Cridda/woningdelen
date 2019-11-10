@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { breakpoints, widths } from '../../styles/variables';
+import { breakpoints, colors, widths } from '../../styles/variables';
 import Fb from '../atoms/Fb';
 import Insta from '../atoms/Insta';
 
@@ -9,8 +9,12 @@ const Footer: FC = () => {
         <Container>
             <Inner>
                 <Social>
-                    <Insta />
-                    <Fb />
+                    <a href={'https://www.instagram.com/woningendelen/'} target={'blank'}>
+                        <Insta />
+                    </a>
+                    <a href={'https://www.facebook.com/Woningendelen/'} target={'blank'}>
+                        <Fb />
+                    </a>
                 </Social>
                 <Rights>
                     <h3>woningdelen.nl</h3>
@@ -36,7 +40,11 @@ const Rights = styled.div`
 `;
 
 const Social = styled.div`
+    color: ${colors.dark};
     width: 50%;
+    > a {
+        color: inherit;
+    }
     > * + * {
         margin-left: 1rem;
     }
@@ -49,7 +57,7 @@ const Container = styled.footer`
 `;
 
 const Inner = styled.div`
-    width: ${widths.lg}px;
+    width: ${widths.xl}px;
     margin: 0 auto;
     padding: 2rem;
     display: flex;

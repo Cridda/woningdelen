@@ -5,7 +5,7 @@ import useMenuState from '../hooks/useMenuState';
 
 const Contact: FC<RouteComponentProps> = () => {
     const { menuProps } = useMenuState(true);
-    return <ContactForm onCloseHandler={() => history.back()} variant={'red'} {...menuProps} />;
+    return <ContactForm onCloseHandler={() => history.back()} variant={'yellow'} {...menuProps} />;
 };
 
 export default Contact;

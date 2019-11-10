@@ -2841,7 +2841,7 @@ export type IndexLayoutQuery = ({ __typename?: 'Query' } & { indexImage: Maybe<(
 export type DienstenImageQueryVariables = {};
 
 
-export type DienstenImageQuery = ({ __typename?: 'Query' } & { dienstenImage: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })>, together: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })> });
+export type DienstenImageQuery = ({ __typename?: 'Query' } & { dienstenImage: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })>, together: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })>, architectureDraw: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })> });
 
 export type IndexImageQueryVariables = {};
 
@@ -2851,7 +2851,7 @@ export type IndexImageQuery = ({ __typename?: 'Query' } & { indexImage: Maybe<({
 export type WoningdelenImageQueryVariables = {};
 
 
-export type WoningdelenImageQuery = ({ __typename?: 'Query' } & { woningdelenImage: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })> });
+export type WoningdelenImageQuery = ({ __typename?: 'Query' } & { woningdelenImage: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })>, together: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })> });
 
 export type PageTemplateQueryQueryVariables = {
   slug: Scalars['String']

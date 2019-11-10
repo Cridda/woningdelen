@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
-import { breakpoints, widths } from '../../styles/variables';
+import styled, { css } from 'styled-components';
+import { breakpoints, colors, widths } from '../../styles/variables';
 import Appear from '../atoms/Appear';
 
 interface Props {
     right?: boolean;
+    width?: 'full' | 'twoThird';
+    variant?: 'light' | 'dark';
 }
 const Block: FC<Props> = props => {
     return <StyledBlock {...props} />;
@@ -13,18 +15,21 @@ const Block: FC<Props> = props => {
 export default Block;
 
 const StyledBlock = styled(Appear)<Props>`
-    width: ${widths.md}px;
-
-    :first-of-type {
-        @media (min-width: ${breakpoints.lg}px) {
-            width: ${widths.xl}px;
-        }
-    }
+    width: ${({ width = 'twoThird' }) => (width === 'twoThird' ? widths.md : widths.xl)}px;
 
     @media (max-width: ${breakpoints.md}px) {
         width: 100%;
     }
-    background: white;
+
+    ${({ variant = 'light' }) =>
+        variant === 'light'
+            ? css`
+                  background: white;
+              `
+            : css`
+                  background: ${colors.dark};
+                  color: white;
+              `}
     position: relative;
     padding: 2rem 1.5rem 2rem 2rem;
     display: flex;

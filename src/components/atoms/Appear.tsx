@@ -3,7 +3,7 @@ import withViewport, { InnerViewportProps, OuterViewportProps, ViewportProps } f
 import styled from 'styled-components';
 import isApp from '../../constants/isApp';
 
-type Props = ViewportProps;
+type Props = ViewportProps & { as?: keyof JSX.IntrinsicElements };
 
 const AppearWrapper = styled.section<Props>`
     transform: translateY(${({ enterCount }) => (enterCount >= 1 ? '0' : '6rem')});
@@ -12,12 +12,11 @@ const AppearWrapper = styled.section<Props>`
 `;
 
 // need to forward ref
-const Appear: FunctionComponent<Props> = ({ innerRef, ...rest }) => {
-    return isApp() ? <section {...rest} /> : <AppearWrapper ref={innerRef} {...rest} />;
+const Appear: FunctionComponent<Props> = ({ innerRef, as, ...rest }) => {
+    return isApp() ? <section {...rest} /> : <AppearWrapper as={as} ref={innerRef} {...rest} />;
 };
 
-export default withViewport<InnerViewportProps, OuterViewportProps & React.HTMLAttributes<HTMLElement>>(
-    Appear,
-    {},
-    { disconnectOnLeave: true }
-);
+export default withViewport<
+    InnerViewportProps,
+    OuterViewportProps & React.HTMLAttributes<HTMLElement> & { as?: keyof JSX.IntrinsicElements }
+>(Appear, {}, { disconnectOnLeave: true });

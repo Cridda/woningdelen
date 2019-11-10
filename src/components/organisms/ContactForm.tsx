@@ -73,7 +73,9 @@ const ContactForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yell
                             <Input name={'comment'} as={'textarea'} id={'comment'} placeholder={'Opmerkingen'} />
                         </FormGroup>
 
-                        <Button type={'submit'}>Versturen</Button>
+                        <Button variant={'accent'} type={'submit'}>
+                            Versturen
+                        </Button>
                     </form>
                     <CloseButton
                         onClick={() => {
@@ -138,7 +140,7 @@ const Container = styled(animated.div)<Partial<Props>>`
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     position: fixed;
     z-index: 100;
-    color: ${({ variant }) => (variant === 'yellow' ? '#222222' : colors.white)};
+    color: ${({ variant }) => (variant === 'yellow' ? colors.dark : colors.white)};
     background: ${({ variant }) => (variant === 'yellow' ? colors.cta : colors.accent)};
     display: flex;
     flex-direction: column;

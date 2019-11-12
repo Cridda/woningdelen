@@ -111,7 +111,7 @@ const Diensten = () => {
                                 'Opstellen van de puntentelling',
                                 'Kadastrale stukken opvragen',
                                 'Bouwtechnische tekeningen en toetsing met betrekking tot het bouwbesluit',
-                                'Onderzoek naar eventuele conclaven met het bestemmingsplan',
+                                'Onderzoek of het mogelijk in strijd is met bestemmingsplan',
                             ]}
                         />
                         <Link to={'/contact'}>

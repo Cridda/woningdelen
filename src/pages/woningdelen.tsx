@@ -80,6 +80,7 @@ const Woningdelen = () => {
                         <Seperator />
                         <h3>Voorwaarden voor het omzetten van een woning naar 3 of 4 onzelfstandige woonruimte</h3>
                         <Features
+                            variant={'small'}
                             features={[
                                 `De woning beschikt over een gemeenschappelijke verblijfsruimte van ten minste 11 m2 met een minimale breedte van 3 meter (art. 4.3 lid 4 Bouwbesluit).
 Er moet een gemeenschappelijke ruimte voor de bewoners zijn. Deze ruimte moet een ruimte zijn die bestemd is voor het ‘verblijven’ van personen. Het mag dus geen bad- of slaapkamer zijn; het moet een verblijfsruimte, zoals een woonkamer of een woonkeuken, zijn.
@@ -91,6 +92,7 @@ Er moet een gemeenschappelijke ruimte voor de bewoners zijn. Deze ruimte moet ee
                         <Seperator />
                         <h3>Voorwaarden voor het omzetten van een woning naar 5 of meer onzelfstandige woonruimte</h3>
                         <Features
+                            variant={'small'}
                             features={[
                                 `De te realiseren onzelfstandige woonruimtes worden beheerd door een instelling die zich krachtens haar statuten richt op de verhuur en het beheer van onzelfstandige woonruimte (bijv. voor jongeren, studenten, of huishoudens met een specifieke zorgbehoefte). De instelling is tevens als zodanig ingeschreven bij de Kamer van Koophandel. Het beheer dient dus uitbesteed te zijn aan een professionele beheerder en mag de verhuurder niet in eigen hand houden.`,
                                 `Van het totaalaantal woningen dat door eenzelfde trappenhuis of galerij wordt ontsloten, of onderdeel uit maakt van hetzelfde bouwblok bij eengezinswoningen, kan maximaal 25% van het totaalaantal woningen worden omgezet in woningen met 5 of meer onzelfstandige woonruimten. Wordt een woning door meerdere trappenhuizen ontsloten, dan geldt een maximum van 25% van het totaalaantal woningen per verdieping. Voor wooncomplexen waarop de gegeven omschrijving niet van toepassing is, omdat sprake is van een afwijkende ontsluitingssystematiek, interne indeling of complexplattegrond, maakt het Dagelijks Bestuur een individuele afweging, waarbij de uitgangspunten van bovenstaande regeling zoveel mogelijk analoog worden toegepast.
@@ -111,6 +113,7 @@ Er moet een gemeenschappelijke ruimte voor de bewoners zijn. Deze ruimte moet ee
                         <p>De gemeente heeft boetes gesteld op het omzetten van een woning zonder vergunning.</p>
                         De boetes zijn:
                         <Features
+                            variant={'small'}
                             features={[
                                 `€6.000,- (en bij herhaalde overtreding €20.500) voor het omzetten een
                                 zelfstandige woning in maximaal 4 onzelfstandige woonruimten zonder vergunning;`,

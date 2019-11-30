@@ -6,9 +6,11 @@ import { Box, Flex } from 'reflexbox';
 import styled from 'styled-components';
 import { MenuStateProps } from '../../hooks/useMenuState';
 import { breakpoints, colors } from '../../styles/variables';
+import Arrow from '../atoms/Arrow';
 import Button from '../atoms/Button';
 import Close from '../atoms/Close';
 import { Header } from '../atoms/Header';
+import TextButton from '../atoms/TextButton';
 
 type Variant = 'red' | 'yellow';
 
@@ -69,20 +71,18 @@ const AdviceForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yello
     const [page, setPage] = useState(0);
 
     return (
-        <Formik
+        <Formik<AdviceValues>
             initialValues={{
+                currentSituation: '',
+                idealSituation: '',
                 street: '',
                 zipcode: '',
                 city: '',
-                // idealSituation: '',
-                // street: '',
-                // zipcode: '',
-                // city: '',
-                // name: '',
-                // company: '',
-                // email: '',
-                // tel: '',
-                // comment: '',
+                name: '',
+                company: '',
+                email: '',
+                tel: '',
+                comment: '',
             }}
             onSubmit={(values, { setSubmitting }) => {
                 fetch('/?no-cache=1', {
@@ -105,7 +105,7 @@ const AdviceForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yello
             }}
         >
             {({ handleSubmit, handleReset, dirty, values, submitForm }) => {
-                // const shouldBeDisabled = getPageContent(page, values);
+                const shouldBeDisabled = getPageContent(page, values);
 
                 return (
                     <Container variant={variant} ref={menuRef} style={props}>
@@ -118,10 +118,11 @@ const AdviceForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yello
                             data-netlify-honeypot="bot-field"
                         >
                             <input type="hidden" name="form-name" value="Advies" />
-                            {/* <Display shouldDisplay={page === 0}>
+                            <Display shouldDisplay={page === 0}>
                                 <h1>Check uw mogelijkheden</h1>
-                            </Display> */}
-                            {/* <FormGroup flexDirection={'column'}>
+                            </Display>
+                            <Display shouldDisplay={page === 1}>
+                                <FormGroup flexDirection={'column'}>
                                     <Header>Huidige situatie</Header>
                                     <Label as={'h4'}>Wat is de huidige situatie van het pand?</Label>
                                     <fieldset>
@@ -144,23 +145,9 @@ const AdviceForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yello
                                             label={'3+ huurders'}
                                         />
                                     </fieldset>
-                                </FormGroup> */}
-                            <Header>Algemene informatie</Header>
-                            <Label as={'h4'}>
-                                Aan de hand van deze gegevens bekijken wij de mogelijkheden omtrent woningdelen
-                            </Label>
-                            <br />
-                            <FormGroup flexDirection={'column'}>
-                                <Input name={'street'} id={'street'} placeholder={'Straatnaam + huisnr.'} />
-                            </FormGroup>
-                            <FormGroup flexDirection={'column'}>
-                                <Input name={'zipcode'} id={'zipcode'} placeholder={'Postcode'} />
-                            </FormGroup>
-                            <FormGroup flexDirection={'column'}>
-                                <Input name={'city'} id={'city'} placeholder={'Plaats'} />
-                            </FormGroup>
-                            <Button type={'submit'} />
-                            {/* <Display shouldDisplay={page === 2}>
+                                </FormGroup>
+                            </Display>
+                            <Display shouldDisplay={page === 2}>
                                 <FormGroup flexDirection={'column'}>
                                     <Header>Gewenste situatie</Header>
                                     <Label as={'h4'}>Aan hoeveel personen wilt u uw huis verhuren?</Label>
@@ -236,8 +223,8 @@ const AdviceForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yello
                                     <a href={'tel: +31 6 48164558'}>+31 6 48164558</a> /
                                     <a href={'tel: +31 6 48164558'}>+31 6 51366333</a>
                                 </h4>
-                            </Display> */}
-                            {/* <Actions>
+                            </Display>
+                            <Actions>
                                 {page !== 0 && page !== 6 && (
                                     <TextButton onClick={() => setPage(page - 1)}>vorige</TextButton>
                                 )}
@@ -263,7 +250,7 @@ const AdviceForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yello
                                         <Arrow style={{ marginLeft: 'auto' }} />
                                     )}
                                 </Button>
-                            </Actions> */}
+                            </Actions>
                         </form>
                         <CloseButton
                             onClick={() => {

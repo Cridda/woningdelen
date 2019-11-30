@@ -89,7 +89,7 @@ const AdviceForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yello
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: encode({
-                        'form-name': 'advies',
+                        'form-name': 'Advies',
                         ...values,
                     }),
                 })
@@ -117,6 +117,7 @@ const AdviceForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yello
                             data-netlify="true"
                             data-netlify-honeypot="bot-field"
                         >
+                            <input type="hidden" name="form-name" value="Advies" />
                             {/* <Display shouldDisplay={page === 0}>
                                 <h1>Check uw mogelijkheden</h1>
                             </Display> */}

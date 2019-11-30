@@ -41,4 +41,8 @@ const StyledButton = styled.button<{ variant: Variant }>`
         color: white;
 
     }
+
+    :disabled{
+        opacity: 0.5;
+    }
 `;

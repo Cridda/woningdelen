@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { breakpoints, colors, widths } from '../../styles/variables';
 import Fb from '../atoms/Fb';
 import Insta from '../atoms/Insta';
+import Linkedin from '../atoms/Linkedin';
 
 const Footer: FC = () => {
     return (
@@ -14,6 +15,10 @@ const Footer: FC = () => {
                     </a>
                     <a href={'https://www.facebook.com/Woningendelen/'} target={'blank'}>
                         <Fb />
+                    </a>
+
+                    <a href={'https://www.facebook.com/Woningendelen/'} target={'blank'}>
+                        <Linkedin />
                     </a>
                 </Social>
                 <Rights>
@@ -43,6 +48,9 @@ const Social = styled.div`
     color: ${colors.dark};
     width: 50%;
     > a {
+        :hover {
+            color: ${colors.accent};
+        }
         color: inherit;
     }
     > * + * {

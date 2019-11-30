@@ -59,17 +59,16 @@ const ContactForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yell
                         data-netlify-honeypot="bot-field"
                     >
                         <FormGroup flexDirection={'column'}>
-                            <Label htmlFor={'name'}>naam</Label>
                             <Input name={'name'} id={'name'} placeholder={'Naam'} />
                         </FormGroup>
-
                         <FormGroup flexDirection={'column'}>
-                            <Label htmlFor={'name'}>email</Label>
                             <Input name={'email'} id={'email'} placeholder={'Email'} />
                         </FormGroup>
 
                         <FormGroup flexDirection={'column'}>
-                            <Label htmlFor={'name'}>Opmerkingen</Label>
+                            <Input name={'tel'} id={'tel'} placeholder={'Telefoon'} />
+                        </FormGroup>
+                        <FormGroup flexDirection={'column'}>
                             <Input name={'comment'} as={'textarea'} id={'comment'} placeholder={'Opmerkingen'} />
                         </FormGroup>
 
@@ -95,7 +94,6 @@ const ContactForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yell
 
 export default ContactForm;
 
-const Label = styled.label``;
 const FormGroup = styled(Flex)`
     :last-of-type {
         margin-bottom: 2rem;

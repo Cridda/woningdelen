@@ -5,8 +5,10 @@ import { animated, config, useSpring } from 'react-spring';
 import { Box, Flex } from 'reflexbox';
 import styled from 'styled-components';
 import Button from '../components/atoms/Button';
+import AdviceForm from '../components/organisms/AdviceForm';
 import Page from '../components/Page';
 import { IndexImageQuery } from '../generated/graphql';
+import useMenuState from '../hooks/useMenuState';
 import IndexLayout from '../layouts';
 import { breakpoints, colors } from '../styles/variables';
 
@@ -46,6 +48,8 @@ const IndexPage = () => {
         config: { ...config.default },
     });
 
+    const adviceForm = useMenuState();
+
     // Update spring with new props
     // Stop animation
     return (
@@ -53,8 +57,8 @@ const IndexPage = () => {
             <Page>
                 <Container style={props}>
                     <h1 style={{ fontSize: '8vmin' }}>
-                        Gewoon. <br />
-                        Zorgeloos verhuren.
+                        Omzettingsvergunning <br />
+                        voor woningdelers.
                     </h1>
                     <Actions flexDirection={['column', 'row']}>
                         <Box mb={[3, 0, null]} mr={[null, 3]}>
@@ -63,9 +67,9 @@ const IndexPage = () => {
                             </Link>
                         </Box>
                         <Box>
-                            <Link to={'/woningendelen'}>
-                                <Button variant={'accent'}>Advies</Button>
-                            </Link>
+                            <Button variant={'accent'} onClick={() => adviceForm.setOpen(true)}>
+                                Advies
+                            </Button>
                         </Box>
                     </Actions>
                 </Container>
@@ -73,6 +77,8 @@ const IndexPage = () => {
             {indexImage2 && indexImage2.childImageSharp && (
                 <Image style={backgroundStyle} fluid={indexImage2.childImageSharp.fluid as FluidObject} />
             )}
+
+            <AdviceForm {...adviceForm.menuProps} />
         </IndexLayout>
     );
 };

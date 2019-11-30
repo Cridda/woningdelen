@@ -1,8 +1,8 @@
 import { Field, FieldProps, Formik } from 'formik';
 import { encode } from 'querystring';
-import React, { FC, InputHTMLAttributes, ReactNode, useState } from 'react';
+import React, { FC, InputHTMLAttributes, useState } from 'react';
 import { animated, config, useSpring } from 'react-spring';
-import { Flex } from 'reflexbox';
+import { Box, Flex } from 'reflexbox';
 import styled from 'styled-components';
 import { MenuStateProps } from '../../hooks/useMenuState';
 import { breakpoints, colors } from '../../styles/variables';
@@ -18,148 +18,31 @@ interface Props extends MenuStateProps {
     variant?: Variant;
     onCloseHandler?: () => void;
 }
+const Display = styled(Box)<{ shouldDisplay: boolean }>`
+    display: ${({ shouldDisplay }) => (shouldDisplay ? 'block' : 'none')};
+`;
 
 const getPageContent = (
     page: number,
     { city, currentSituation, email, idealSituation, name, street, tel, zipcode }: AdviceValues
-): { content: ReactNode; shouldBeDisabled: boolean } | null => {
+): boolean => {
     switch (page) {
         case 0:
-            return { content: <h1>Check uw mogelijkheden</h1>, shouldBeDisabled: false };
+            return false;
         case 1:
-            return {
-                content: (
-                    <FormGroup flexDirection={'column'}>
-                        <Header>Huidige situatie</Header>
-                        <Label as={'h4'}>Wat is de huidige situatie van het pand?</Label>
-                        <Field
-                            name={'currentSituation'}
-                            id={'Geen huurder'}
-                            component={RadioButton}
-                            label={'Geen huurder'}
-                        />
-                        <Field
-                            name={'currentSituation'}
-                            id={'1-2 huurders'}
-                            component={RadioButton}
-                            label={'1-2 huurders'}
-                        />
-                        <Field
-                            name={'currentSituation'}
-                            id={'3+ huurders'}
-                            component={RadioButton}
-                            label={'3+ huurders'}
-                        />
-                    </FormGroup>
-                ),
-                shouldBeDisabled: !currentSituation,
-            };
+            return !currentSituation;
         case 2:
-            return {
-                content: (
-                    <FormGroup flexDirection={'column'}>
-                        <Header>Gewenste situatie</Header>
-                        <Label as={'h4'} htmlFor={'name'}>
-                            Aan hoeveel personen wilt u uw huis verhuren?
-                        </Label>
-                        <Field
-                            name={'idealSituation'}
-                            id={'3 woningdelers'}
-                            component={RadioButton}
-                            label={'3 woningdelers'}
-                        />
-                        <Field
-                            name={'idealSituation'}
-                            id={'4 woningdelers'}
-                            component={RadioButton}
-                            label={'4 woningdelers'}
-                        />
-                        <Field
-                            name={'idealSituation'}
-                            id={'5+ woningdelers'}
-                            component={RadioButton}
-                            label={'5+ woningdelers'}
-                        />
-                    </FormGroup>
-                ),
-                shouldBeDisabled: !idealSituation,
-            };
-
+            return !idealSituation;
         case 3:
-            return {
-                content: (
-                    <>
-                        <Header>Algemene informatie</Header>
-                        <Label as={'h4'}>
-                            Aan de hand van deze gegevens bekijken wij de mogelijkheden omtrent woningdelen
-                        </Label>
-                        <br />
-                        <FormGroup flexDirection={'column'}>
-                            <Input name={'street'} id={'street'} placeholder={'Straatnaam + huisnr.'} />
-                        </FormGroup>
-                        <FormGroup flexDirection={'column'}>
-                            <Input name={'zipcode'} id={'zipcode'} placeholder={'Postcode'} />
-                        </FormGroup>
-                        <FormGroup flexDirection={'column'}>
-                            <Input name={'city'} id={'city'} placeholder={'Plaats'} />
-                        </FormGroup>
-                    </>
-                ),
-                shouldBeDisabled: !street || !zipcode || !city,
-            };
-
+            return !street || !zipcode || !city;
         case 4:
-            return {
-                content: (
-                    <>
-                        <Header>Contact gegevens</Header>
-                        <FormGroup flexDirection={'column'}>
-                            <Input name={'name'} id={'name'} placeholder={'Naam'} />
-                        </FormGroup>
-                        <FormGroup flexDirection={'column'}>
-                            <Input name={'company'} id={'company'} placeholder={'Bedrijf (optioneel)'} />
-                        </FormGroup>
-
-                        <FormGroup flexDirection={'column'}>
-                            <Input type={'email'} name={'email'} id={'email'} placeholder={'Email'} />
-                        </FormGroup>
-
-                        <FormGroup flexDirection={'column'}>
-                            <Input name={'tel'} id={'tel'} placeholder={'Telefoon'} />
-                        </FormGroup>
-                    </>
-                ),
-                shouldBeDisabled: !name || !email || !tel,
-            };
+            return !name || !email || !tel;
         case 5:
-            return {
-                content: (
-                    <>
-                        <Header>Nog vragen / opmerkingen?</Header>
-                        <FormGroup flexDirection={'column'}>
-                            <Input name={'comment'} as={'textarea'} id={'comment'} placeholder={'Tekst'} />
-                        </FormGroup>
-                    </>
-                ),
-                shouldBeDisabled: false,
-            };
+            return false;
         case 6:
-            return {
-                content: (
-                    <>
-                        <h1>Bedankt voor uw verzoek. U hoort spoedig van ons!</h1>
-                        Liever telefonisch contact? wij staan altijd voor u klaar!
-                        <h4>
-                            <a href={'tel: +31 6 48164558'}>+31 6 48164558</a> /
-                            <a href={'tel: +31 6 48164558'}>+31 6 51366333</a>
-                        </h4>
-                    </>
-                ),
-                shouldBeDisabled: false,
-            };
-
+            return false;
         default:
-            return null;
+            return false;
     }
 };
 
@@ -222,24 +105,122 @@ const AdviceForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yello
             }}
         >
             {({ handleSubmit, handleReset, dirty, values, submitForm }) => {
-                const pageContent = getPageContent(page, values);
-                if (!pageContent) {
-                    return null;
-                }
-
-                const { content, shouldBeDisabled } = pageContent;
+                const shouldBeDisabled = getPageContent(page, values);
 
                 return (
                     <Container variant={variant} ref={menuRef} style={props}>
                         <form
                             style={{ overflow: 'scroll', padding: '2px' }}
-                            name="Avies"
+                            name="Advies"
                             onSubmit={handleSubmit}
                             onReset={handleReset}
                             data-netlify="true"
                             data-netlify-honeypot="bot-field"
                         >
-                            {content}
+                            <Display shouldDisplay={page === 0}>
+                                <h1>Check uw mogelijkheden</h1>
+                            </Display>
+                            <Display shouldDisplay={page === 1}>
+                                <FormGroup flexDirection={'column'}>
+                                    <Header>Huidige situatie</Header>
+                                    <Label as={'h4'}>Wat is de huidige situatie van het pand?</Label>
+                                    <Field
+                                        name={'currentSituation'}
+                                        id={'Geen huurder'}
+                                        component={RadioButton}
+                                        label={'Geen huurder'}
+                                    />
+                                    <Field
+                                        name={'currentSituation'}
+                                        id={'1-2 huurders'}
+                                        component={RadioButton}
+                                        label={'1-2 huurders'}
+                                    />
+                                    <Field
+                                        name={'currentSituation'}
+                                        id={'3+ huurders'}
+                                        component={RadioButton}
+                                        label={'3+ huurders'}
+                                    />
+                                </FormGroup>
+                            </Display>
+                            <Display shouldDisplay={page === 2}>
+                                <FormGroup flexDirection={'column'}>
+                                    <Header>Gewenste situatie</Header>
+                                    <Label as={'h4'} htmlFor={'name'}>
+                                        Aan hoeveel personen wilt u uw huis verhuren?
+                                    </Label>
+                                    <Field
+                                        name={'idealSituation'}
+                                        id={'3 woningdelers'}
+                                        component={RadioButton}
+                                        label={'3 woningdelers'}
+                                    />
+                                    <Field
+                                        name={'idealSituation'}
+                                        id={'4 woningdelers'}
+                                        component={RadioButton}
+                                        label={'4 woningdelers'}
+                                    />
+                                    <Field
+                                        name={'idealSituation'}
+                                        id={'5+ woningdelers'}
+                                        component={RadioButton}
+                                        label={'5+ woningdelers'}
+                                    />
+                                </FormGroup>
+                            </Display>
+
+                            <Display shouldDisplay={page === 3}>
+                                <Header>Algemene informatie</Header>
+                                <Label as={'h4'}>
+                                    Aan de hand van deze gegevens bekijken wij de mogelijkheden omtrent woningdelen
+                                </Label>
+                                <br />
+                                <FormGroup flexDirection={'column'}>
+                                    <Input name={'street'} id={'street'} placeholder={'Straatnaam + huisnr.'} />
+                                </FormGroup>
+                                <FormGroup flexDirection={'column'}>
+                                    <Input name={'zipcode'} id={'zipcode'} placeholder={'Postcode'} />
+                                </FormGroup>
+                                <FormGroup flexDirection={'column'}>
+                                    <Input name={'city'} id={'city'} placeholder={'Plaats'} />
+                                </FormGroup>
+                            </Display>
+
+                            <Display shouldDisplay={page === 4}>
+                                <Header>Contact gegevens</Header>
+                                <FormGroup flexDirection={'column'}>
+                                    <Input name={'name'} id={'name'} placeholder={'Naam'} />
+                                </FormGroup>
+                                <FormGroup flexDirection={'column'}>
+                                    <Input name={'company'} id={'company'} placeholder={'Bedrijf (optioneel)'} />
+                                </FormGroup>
+
+                                <FormGroup flexDirection={'column'}>
+                                    <Input type={'email'} name={'email'} id={'email'} placeholder={'Email'} />
+                                </FormGroup>
+
+                                <FormGroup flexDirection={'column'}>
+                                    <Input name={'tel'} id={'tel'} placeholder={'Telefoon'} />
+                                </FormGroup>
+                            </Display>
+
+                            <Display shouldDisplay={page === 5}>
+                                <Header>Nog vragen / opmerkingen?</Header>
+                                <FormGroup flexDirection={'column'}>
+                                    <Input name={'comment'} as={'textarea'} id={'comment'} placeholder={'Tekst'} />
+                                </FormGroup>
+                            </Display>
+
+                            <Display shouldDisplay={page === 6}>
+                                <h1>Bedankt voor uw verzoek. U hoort spoedig van ons!</h1>
+                                Liever telefonisch contact? wij staan altijd voor u klaar!
+                                <h4>
+                                    <a href={'tel: +31 6 48164558'}>+31 6 48164558</a> /
+                                    <a href={'tel: +31 6 48164558'}>+31 6 51366333</a>
+                                </h4>
+                            </Display>
                             <Actions>
                                 {page !== 0 && page !== 6 && (
                                     <TextButton onClick={() => setPage(page - 1)}>vorige</TextButton>
@@ -270,7 +251,11 @@ const AdviceForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yello
                         </form>
                         <CloseButton
                             onClick={() => {
-                                if (dirty && !window.confirm('Weet u zeker dat u het formulier wilt verlaten?')) {
+                                if (
+                                    dirty &&
+                                    !window.confirm('Weet u zeker dat u het formulier wilt verlaten?') &&
+                                    page !== 6
+                                ) {
                                     return;
                                 }
                                 if (onCloseHandler) {

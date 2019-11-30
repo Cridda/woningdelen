@@ -27,7 +27,7 @@ const ContactForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yell
 
     return (
         <Formik
-            initialValues={{ name: '', email: '', comment: '' }}
+            initialValues={{ name: '', email: '', comment: '', tel: '' }}
             onSubmit={(values, { setSubmitting }) => {
                 fetch('/?no-cache=1', {
                     method: 'POST',
@@ -52,7 +52,7 @@ const ContactForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yell
                 <Container variant={variant} ref={menuRef} style={props}>
                     <form
                         style={{ overflow: 'scroll' }}
-                        name="contact"
+                        name="Contact"
                         onSubmit={handleSubmit}
                         onReset={handleReset}
                         data-netlify="true"

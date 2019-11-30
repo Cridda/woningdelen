@@ -233,7 +233,7 @@ const AdviceForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yello
                     <Container variant={variant} ref={menuRef} style={props}>
                         <form
                             style={{ overflow: 'scroll', padding: '2px' }}
-                            name="advies"
+                            name="Avies"
                             onSubmit={handleSubmit}
                             onReset={handleReset}
                             data-netlify="true"

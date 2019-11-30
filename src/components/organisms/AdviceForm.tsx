@@ -71,7 +71,9 @@ const AdviceForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yello
     return (
         <Formik
             initialValues={{
-                currentSituation: '',
+                street: '',
+                zipcode: '',
+                city: '',
                 // idealSituation: '',
                 // street: '',
                 // zipcode: '',
@@ -119,7 +121,7 @@ const AdviceForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yello
                                 <h1>Check uw mogelijkheden</h1>
                             </Display> */}
                             <Display shouldDisplay={true}>
-                                <FormGroup flexDirection={'column'}>
+                                {/* <FormGroup flexDirection={'column'}>
                                     <Header>Huidige situatie</Header>
                                     <Label as={'h4'}>Wat is de huidige situatie van het pand?</Label>
                                     <fieldset>
@@ -142,6 +144,20 @@ const AdviceForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yello
                                             label={'3+ huurders'}
                                         />
                                     </fieldset>
+                                </FormGroup> */}
+                                <Header>Algemene informatie</Header>
+                                <Label as={'h4'}>
+                                    Aan de hand van deze gegevens bekijken wij de mogelijkheden omtrent woningdelen
+                                </Label>
+                                <br />
+                                <FormGroup flexDirection={'column'}>
+                                    <Input name={'street'} id={'street'} placeholder={'Straatnaam + huisnr.'} />
+                                </FormGroup>
+                                <FormGroup flexDirection={'column'}>
+                                    <Input name={'zipcode'} id={'zipcode'} placeholder={'Postcode'} />
+                                </FormGroup>
+                                <FormGroup flexDirection={'column'}>
+                                    <Input name={'city'} id={'city'} placeholder={'Plaats'} />
                                 </FormGroup>
                                 <Button type={'submit'} />
                             </Display>

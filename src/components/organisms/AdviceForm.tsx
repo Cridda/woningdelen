@@ -124,50 +124,52 @@ const AdviceForm: FC<Props> = ({ setOpen, open, onCloseHandler, variant = 'yello
                                 <FormGroup flexDirection={'column'}>
                                     <Header>Huidige situatie</Header>
                                     <Label as={'h4'}>Wat is de huidige situatie van het pand?</Label>
-                                    <Field
-                                        name={'currentSituation'}
-                                        id={'Geen huurder'}
-                                        component={RadioButton}
-                                        label={'Geen huurder'}
-                                    />
-                                    <Field
-                                        name={'currentSituation'}
-                                        id={'1-2 huurders'}
-                                        component={RadioButton}
-                                        label={'1-2 huurders'}
-                                    />
-                                    <Field
-                                        name={'currentSituation'}
-                                        id={'3+ huurders'}
-                                        component={RadioButton}
-                                        label={'3+ huurders'}
-                                    />
+                                    <fieldset>
+                                        <Field
+                                            name={'currentSituation'}
+                                            id={'Geen huurder'}
+                                            component={RadioButton}
+                                            label={'Geen huurder'}
+                                        />
+                                        <Field
+                                            name={'currentSituation'}
+                                            id={'1-2 huurders'}
+                                            component={RadioButton}
+                                            label={'1-2 huurders'}
+                                        />
+                                        <Field
+                                            name={'currentSituation'}
+                                            id={'3+ huurders'}
+                                            component={RadioButton}
+                                            label={'3+ huurders'}
+                                        />
+                                    </fieldset>
                                 </FormGroup>
                             </Display>
                             <Display shouldDisplay={page === 2}>
                                 <FormGroup flexDirection={'column'}>
                                     <Header>Gewenste situatie</Header>
-                                    <Label as={'h4'} htmlFor={'name'}>
-                                        Aan hoeveel personen wilt u uw huis verhuren?
-                                    </Label>
-                                    <Field
-                                        name={'idealSituation'}
-                                        id={'3 woningdelers'}
-                                        component={RadioButton}
-                                        label={'3 woningdelers'}
-                                    />
-                                    <Field
-                                        name={'idealSituation'}
-                                        id={'4 woningdelers'}
-                                        component={RadioButton}
-                                        label={'4 woningdelers'}
-                                    />
-                                    <Field
-                                        name={'idealSituation'}
-                                        id={'5+ woningdelers'}
-                                        component={RadioButton}
-                                        label={'5+ woningdelers'}
-                                    />
+                                    <Label as={'h4'}>Aan hoeveel personen wilt u uw huis verhuren?</Label>
+                                    <fieldset>
+                                        <Field
+                                            name={'idealSituation'}
+                                            id={'3 woningdelers'}
+                                            component={RadioButton}
+                                            label={'3 woningdelers'}
+                                        />
+                                        <Field
+                                            name={'idealSituation'}
+                                            id={'4 woningdelers'}
+                                            component={RadioButton}
+                                            label={'4 woningdelers'}
+                                        />
+                                        <Field
+                                            name={'idealSituation'}
+                                            id={'5+ woningdelers'}
+                                            component={RadioButton}
+                                            label={'5+ woningdelers'}
+                                        />
+                                    </fieldset>
                                 </FormGroup>
                             </Display>
 
@@ -299,18 +301,20 @@ interface RadioButtonProps extends FieldProps, Omit<InputHTMLAttributes<HTMLInpu
 const RadioButton: FC<RadioButtonProps> = ({ field: { name, value, onChange, onBlur }, form, id, label, ...props }) => {
     return (
         <Flex alignItems={'center'}>
-            <input
-                style={{ marginRight: '0.6rem' }}
-                name={name}
-                id={id}
-                type="radio"
-                value={id} // could be something else for output?
-                checked={id === value}
-                onChange={onChange}
-                onBlur={onBlur}
-                {...props}
-            />
-            <label htmlFor={id}>{label}</label>
+            <label>
+                <input
+                    style={{ marginRight: '0.6rem' }}
+                    name={name}
+                    id={id}
+                    type="radio"
+                    value={id} // could be something else for output?
+                    checked={id === value}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    {...props}
+                />
+                {label}
+            </label>
         </Flex>
     );
 };

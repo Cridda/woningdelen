@@ -68,11 +68,11 @@ const Diensten = () => {
                         <Flex flexDirection={['column', 'row']}>
                             <Box width={[1, 1 / 2]} pr={4} pb={[5, 0]}>
                                 <h1>Wij streven naar de beste service.</h1>
-                                <p>
+                                <h4>
                                     Van omzettingsvergunningen tot bouwbegeleiding. Samen kijken wat we voor u kunnen
                                     betekenen is een eerste, het realiseren daarvan is ons streven. Neem een kijkje in
                                     onze dienstpakketten hieronder.
-                                </p>
+                                </h4>
                             </Box>
                             <Box width={[1, 1 / 2]} mt={'-4rem'}>
                                 {together && together.childImageSharp && (

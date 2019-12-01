@@ -121,12 +121,18 @@ const StyledInput = styled.input`
     max-width: 40rem;
     border: none;
     background: none;
-    font-size: 2rem;
+    font-size: 1.6rem;
     position: relative;
     border-bottom: 4px solid;
-    padding: 1rem 0;
+    padding: 0.8rem 0;
     color: currentColor;
     outline: none;
+
+    @media (max-width: ${breakpoints.lg}px) {
+        font-size: 1.4rem;
+        border-bottom: 2px solid;
+        padding: 0.6rem 0;
+    }
 `;
 
 const Input: FC<InputHTMLAttributes<HTMLInputElement> & { as?: keyof JSX.IntrinsicElements }> = props => (

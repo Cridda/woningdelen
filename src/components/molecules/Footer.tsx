@@ -4,6 +4,7 @@ import { breakpoints, colors, widths } from '../../styles/variables';
 import Fb from '../atoms/Fb';
 import Insta from '../atoms/Insta';
 import Linkedin from '../atoms/Linkedin';
+import Mail from '../atoms/Mail';
 
 const Footer: FC = () => {
     return (
@@ -17,8 +18,11 @@ const Footer: FC = () => {
                         <Fb />
                     </a>
 
-                    <a href={'https://www.facebook.com/Woningendelen/'} target={'blank'}>
+                    <a href={'https://www.linkedin.com/company/woningen-delen/'} target={'blank'}>
                         <Linkedin />
+                    </a>
+                    <a href={'mailto:info@woningendelen.nl'}>
+                        <Mail />
                     </a>
                 </Social>
                 <Rights>

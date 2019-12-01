@@ -2848,6 +2848,11 @@ export type IndexImageQueryVariables = {};
 
 export type IndexImageQuery = ({ __typename?: 'Query' } & { indexImage: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })>, indexImage2: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })>, indexImage3: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })> });
 
+export type OverOnsQueryVariables = {};
+
+
+export type OverOnsQuery = ({ __typename?: 'Query' } & { overOnsImage: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })>, us: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })>, karelDaan: Maybe<({ __typename?: 'File' } & { childImageSharp: Maybe<({ __typename?: 'ImageSharp' } & { fluid: Maybe<({ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment)> })> })> });
+
 export type WoningdelenImageQueryVariables = {};
 
 

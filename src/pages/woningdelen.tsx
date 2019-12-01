@@ -17,7 +17,7 @@ export const woningdelenImageQuery = graphql`
     query WoningdelenImage {
         woningdelenImage: file(relativePath: { eq: "woningdelen.jpg" }) {
             childImageSharp {
-                fluid(maxWidth: 1000) {
+                fluid(maxWidth: 2560) {
                     ...GatsbyImageSharpFluid
                 }
             }
@@ -56,10 +56,9 @@ const Woningdelen = () => {
                     <Block width={'full'} right>
                         <Flex flexDirection={['column', 'row']}>
                             <Box width={[1, 1 / 2]} pb={[5, 0]} pr={[0, 3]}>
-                                <h1 style={{ wordWrap: 'break-word' }}>Omzettingsvergunning</h1>
+                                <h1 style={{ wordWrap: 'break-word' }}>Over ons</h1>
                                 <h3>
-                                    De gemeente Amsterdam Heeft per 1 januari 2017 een nieuw beleid voor woningdelen
-                                    opgesteld.
+                                    De overheid heeft per 1 januari 2017 een nieuw beleid voor woningdelen opgesteld.
                                 </h3>
                                 <p>
                                     Onder woningdelen wordt verstaan; het delen van een woning door drie of meer

@@ -11,6 +11,7 @@ import { IndexImageQuery } from '../generated/graphql';
 import useMenuState from '../hooks/useMenuState';
 import IndexLayout from '../layouts';
 import { breakpoints, colors } from '../styles/variables';
+import triggerGAEvent from '../utils/triggerGAEvent';
 
 export const indexImageQuery = graphql`
     query IndexImage {
@@ -67,7 +68,13 @@ const IndexPage = () => {
                             </Link>
                         </Box>
                         <Box>
-                            <Button variant={'accent'} onClick={() => adviceForm.setOpen(true)}>
+                            <Button
+                                variant={'accent'}
+                                onClick={() => {
+                                    triggerGAEvent('click', { event_category: 'Formulier', event_label: 'Advies' });
+                                    adviceForm.setOpen(true);
+                                }}
+                            >
                                 Advies
                             </Button>
                         </Box>

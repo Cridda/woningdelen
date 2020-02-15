@@ -16,6 +16,7 @@ import { DienstenImageQuery } from '../generated/graphql';
 import useMenuState from '../hooks/useMenuState';
 import IndexLayout from '../layouts';
 import { colors, widths } from '../styles/variables';
+import triggerGAEvent from '../utils/triggerGAEvent';
 
 export const dienstenImageQuery = graphql`
     query DienstenImage {
@@ -80,7 +81,12 @@ const Diensten = () => {
                                 )}
                             </Box>
                         </Flex>
-                        <Cta onClick={() => cta.setOpen(true)}>
+                        <Cta
+                            onClick={() => {
+                                triggerGAEvent('click', { event_category: 'Formulier', event_label: 'Contact' });
+                                cta.setOpen(true);
+                            }}
+                        >
                             <Header>Vergunning nodig?</Header>
                             Neem nu snel contact op!
                             <Arrow />
@@ -134,7 +140,13 @@ const Diensten = () => {
                                 </p>
                             </Box>
                         </Flex>
-                        <Cta variant={'left'} onClick={() => cta.setOpen(true)}>
+                        <Cta
+                            variant={'left'}
+                            onClick={() => {
+                                triggerGAEvent('click', { event_category: 'Formulier', event_label: 'Contact' });
+                                cta.setOpen(true);
+                            }}
+                        >
                             <Header>Vrijblijvend advies?</Header>
                             Neem nu snel contact op!
                             <Arrow />

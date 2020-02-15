@@ -1,5 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
+import { OutboundLink } from 'gatsby-plugin-gtag';
 import * as React from 'react';
 import { Box, Flex } from 'reflexbox';
 import styled from 'styled-components';
@@ -56,7 +57,7 @@ const Woningdelen = () => {
                     <Block width={'full'} right>
                         <Flex flexDirection={['column', 'row']}>
                             <Box width={[1, 1 / 2]} pb={[5, 0]} pr={[0, 3]}>
-                                <h1 style={{ wordWrap: 'break-word' }}>Over ons</h1>
+                                <h1 style={{ wordWrap: 'break-word' }}>Woningen delen</h1>
                                 <h3>
                                     De overheid heeft per 1 januari 2017 een nieuw beleid voor woningdelen opgesteld.
                                 </h3>
@@ -129,9 +130,12 @@ Er moet een gemeenschappelijke ruimte voor de bewoners zijn. Deze ruimte moet ee
                             opgelegd. Ook als de woning is verhuurd. De gemeente kan er ook voor kiezen om de boete bij
                             de huurders op te leggen. Het opleggen van een boete door de gemeente is altijd een besluit
                             waar bezwaar en beroep tegen openstaat. <br /> <br /> (bron: &nbsp;
-                            <a href={'https://www.hielkemaco.nl/nieuws/amsterdam-woongroepenbeleid-afgeschaft/'}>
+                            <OutboundLink
+                                target="_blank"
+                                href={'https://www.hielkemaco.nl/nieuws/amsterdam-woongroepenbeleid-afgeschaft/'}
+                            >
                                 https://www.hielkemaco.nl/nieuws/amsterdam-woongroepenbeleid-afgeschaft/)
-                            </a>
+                            </OutboundLink>
                         </p>
                     </Block>
                 </Container>

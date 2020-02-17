@@ -20,14 +20,6 @@ declare module '*.png';
 
 declare module 'intersection-observer';
 
-declare module 'gatsby-plugin-gtag' {
-    interface OutboundLinkProps {
-        onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
-    }
-
-    export const OutboundLink: React.ComponentType<React.HTMLProps<HTMLAnchorElement>>;
-}
-
 declare module 'react-in-viewport' {
     import { ComponentClass, ComponentType as Component, RefObject, FC, ReactElement } from 'react';
 

@@ -114,7 +114,7 @@ const OverOns = () => {
 
                         <h4>Neem gerust contact op voor een vrijblijvend kennismakingsgesprek.</h4>
                         <h4>
-                            <a href={'mailto: info@woningdelen.nl'}>info@woningdelen.nl</a>
+                            <a href={'mailto: info@woningendelen.nl'}>info@woningendelen.nl</a>
                         </h4>
                         <h4>
                             T:
